@@ -24,63 +24,149 @@
       type="image/ico"
       href="https://jsd.nn.ci/gh/alist-org/logo@main/logo.svg"
     />
-    <style>
+    <meta charset="UTF-8">
+<style>
         /* 全局字体设置 */
         * {
-            font-weight: bold;
-            color: #A1C6EA; /* 浅蓝色文字 */
+            color: #FFFFFF;
 }     
-        /* 图标按钮和对象框背景透明 */
-        .hope-c-ivMHWx-hZistB-cv.hope-icon-button,
-        .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css,
-        .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-iigjoxS-css,
-        .hope-c-PJLV-ijgzmFG-css {
-            background-color: rgba(255, 255, 255, 0) !important;
-        }
 
-        /* 顶部和导航条 */
-        .hope-c-PJLV-ikaMhsQ-css,
-        .hope-c-PJLV-icWrYmg-css,
-        .hope-ui-light .hope-c-PJLV-idaeksS-css,
-        .hope-ui-dark .hope-c-PJLV-idaeksS-css,
-        .hope-ui-light .hope-c-PJLV-icKsjdm-css,
-        .hope-ui-dark .hope-c-PJLV-icKsjdm-css {
-            background-color: rgba(255, 255, 255, 0) !important;
-            border-radius: var(--hope-radii-xl) !important;
-        }
-.hope-c-PJLV.hope-c-PJLV-ikSuVsl-css{background-color: rgba(255, 255, 255, 0)!important;}
-.hope-c-PJLV.hope-c-PJLV-iiuDLME-css{background-color:rgb(0 0 0 / 0%)!important;}
-
-
-/* 深色背景 */
-#canvas-basic {
-    position: fixed;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999;
-    background-color: #1E2A47; /* 深碳蓝色背景 */
+/*白天背景图*/
+ .hope-ui-light {
+    background-image: linear-gradient(rgba(200,200,200,0), rgba(200,200,200,0)), url('https://img-cdn.ovovo.click/random.php');
+    background-repeat:repeat;
+    background-size:50%;
+    background-attachment:local;
+    background-position-x:center;
+    opacity: 1;
 }
-.hope-c-PJLV-ibwASZs-css {
-        display:none;
-    }
+/*夜间背景图*/
+ .hope-ui-dark {
+    background-image: linear-gradient(rgba(200,200,200,0), rgba(200,200,200,0)), url('https://img-cdn.ovovo.click/random.php');
+    background-repeat:repeat;
+    background-size:50%;
+    background-attachment:local;
+    background-position-x:center;
+    opacity: 1;
+}
 
-        /* 鼠标指针样式 */
-        .main-content img, body {
-            cursor: url(https://cdn.jsdelivr.net/gh/huangwb8/bloghelper@latest/mouse/halo-dream/cursor/breeze/Arrow.cur), auto;
-        }
-        .actions > div, .expand-done, .main-content figure > figcaption div, .navbar-above .navbar-nav .item, .navbar-searchicon, .navbar-slideicon, .photos .picture-details, .widget .ad-tag .click-close, a, button {
-            cursor: url(https://cdn.jsdelivr.net/gh/huangwb8/bloghelper@latest/mouse/halo-dream/cursor/breeze/Hand.cur), auto;
-        }
-        blockquote, code, h1, h2, h3, h4, h5, h6, hr, input[type=text], li, p, td, textarea, th {
-            cursor: url(https://cdn.jsdelivr.net/gh/huangwb8/bloghelper@latest/mouse/halo-dream/cursor/breeze/IBeam.cur), auto;
-        }
 
-    </style>
+  /*主列表白天模式透明*/
+  .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+  /*主列表夜间模式透明*/
+  .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-iigjoxS-css {
+    background-color: rgb(0 0 0 / 0) !important;
+  }
+  /*readme白天模式透明*/
+  .hope-c-PJLV.hope-c-PJLV-ikSuVsl-css {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+  /*readme夜间模式透明*/
+  .hope-c-PJLV.hope-c-PJLV-iiuDLME-css {
+    background-color: rgb(0 0 0 / 0) !important;
+  }
+
+
+  /*顶部右上角切换按钮透明*/
+  .hope-ui-light .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+  .hope-ui-dark .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+    background-color: rgb(0 0 0 / 0) !important;
+  }
+
+
+  /*右下角侧边栏按钮透明 第一个是白天 第二个是夜间*/
+  .hope-ui-light .hope-c-PJLV-ijgzmFG-css {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+  .hope-ui-dark .hope-c-PJLV-ijgzmFG-css {
+    background-color: rgb(0 0 0 / 0) !important;
+  }
+  /*白天模式代码块透明*/
+  .hope-ui-light pre {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+  /*夜间模式代码块透明*/
+  .hope-ui-dark pre {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+
+
+  /*左侧侧边栏目录*/
+  /*白天模式*/
+  .hope-ui-light .hope-c-PJLV-ieGWMbI-css {
+    background: rgba(255, 255, 255, 0) !important;
+  }
+  /*夜间模式*/
+  .hope-ui-dark .hope-c-PJLV-ieGWMbI-css {
+    background-color: rgb(0 0 0 / 0) !important;
+  }
+  /* 返回顶部 */
+  .hope-c-PJLV-ihVEsOa-css {
+    background: rgba(255, 255, 255, 0) !important;
+  }
+  .hope-ui-dark .hope-c-PJLV-ihVEsOa-css {
+    background-color: rgb(0 0 0 / 0) !important;
+  }
+
+
+  /*顶部*/
+  #root > .header {
+    background: rgba(255, 255, 255, 0);
+  }
+  /*导航条*/
+  /*白天模式*/
+  .hope-ui-light .body > .nav {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: var(--hope-radii-xl);
+  }
+  /*夜间模式*/
+  .hope-ui-dark .body > .nav {
+    background-color: rgb(0 0 0 / 0);
+    border-radius: var(--hope-radii-xl);
+  }
+  /*隐藏导航条遮罩*/
+  .body > .nav::after {
+    display: none;
+  }
+
+
+  /*底部CSS，.App .table这三个一起的*/
+  dibu {
+    border-top: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+  .App {
+    min-height: 85vh;
+  }
+  .table {
+    margin: auto;
+  }
+
+</style>
+<!---去掉底部管理--->
+<style>
+.footer span,.footer a:nth-of-type(2){
+  display:none;
+}
+</style>
+<!--去掉底部Powered by Alist--->
+<style>
+.footer span,.footer a:nth-of-type(1){
+  display:none;
+}
+</style>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css">
 <canvas id="canvas-basic"></canvas>
 
 
@@ -100,7 +186,9 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
+<div style="text-align:center;background-color: rgba(255,255,255,.3);">
+2025 DINGHY
+</div>
     <script src="/src/main.tsx" type="module"></script>
     <!-- customize body -->
   </body>
