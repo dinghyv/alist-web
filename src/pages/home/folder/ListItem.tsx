@@ -29,8 +29,6 @@ export interface Col {
 
 export const cols: Col[] = [
   { name: "name", textAlign: "left", w: { "@initial": "76%", "@md": "50%" } },
-  { name: "size", textAlign: "right", w: { "@initial": "24%", "@md": "17%" } },
-  { name: "modified", textAlign: "right", w: { "@initial": 0, "@md": "33%" } },
 ]
 
 export const ListItem = (props: { obj: StoreObj; index: number }) => {
@@ -149,17 +147,6 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
             {props.obj.name}
           </Text>
         </HStack>
-        <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
-          {getFileSize(props.obj.size)}
-        </Text>
-        <Text
-          class="modified"
-          display={{ "@initial": "none", "@md": "inline" }}
-          w={cols[2].w}
-          textAlign={cols[2].textAlign as any}
-        >
-          {formatDate(props.obj.modified)}
-        </Text>
       </HStack>
     </Motion.div>
   )
