@@ -125,15 +125,24 @@
   .table {
     margin: auto;
   }
-.footer span,.footer a:nth-of-type(1){
-  display:none;
+
+</style>
+<!---去掉底部管理--->
+<style>
 .footer span,.footer a:nth-of-type(2){
   display:none;
+}
 </style>
+<!--去掉底部Powered by Alist--->
+<style>
+.footer span,.footer a:nth-of-type(1){
+  display:none;
+}
+</style>
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
 <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css">
-<canvas id="canvas-basic"></canvas>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="referrer" content="same-origin" />
@@ -156,14 +165,13 @@
       type="image/ico"
       href="https://jsd.nn.ci/gh/alist-org/logo@main/logo.svg"
     />
-    <meta charset="UTF-8">
     <title>Loading...</title>
     <script>
       window.ALIST = {
         cdn: undefined,
         monaco_cdn: undefined,
         base_path: undefined,
-        api: "https://cd.vyhd.xyz",
+        api: undefined,
         main_color: undefined,
       }
       window.__dynamic_base__ = window.ALIST.cdn || ""
@@ -172,6 +180,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
     <script src="/src/main.tsx" type="module"></script>
 <div style="text-align:center;background-color: rgba(255,255,255,.3);">
 2025 DINGHY
