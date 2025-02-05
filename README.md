@@ -61,7 +61,7 @@
     </tr>
     <tr>
         <td><b>🎯注释</b></td>
-        <td>*1.本站所有国内外都代指美利坚合众国的国内外。</td>
+        <td>*1.本站所有国内外都没有特别代指。</td>
     </tr>
     <tr>
         <td></td>
@@ -90,6 +90,7 @@
 <br />
 <img src="https://th.vyhd.xyz/file/AgACAgQAAyEGAASQmrSmAAMbZ5WnRHGp-Ehfo4RaRIvgnFdnp2QAApTFMRsMbbFQk3C6mm8QfFwBAAMCAAN5AAM2BA.png" height="350" width="350" >
 </details>
+
 
 > 2024-2025 [DINGHYV](https://www.vyhd.xyz/) 
 >
