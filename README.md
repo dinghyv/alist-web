@@ -1,4 +1,4 @@
-<div style="text-align:center;"> <img src="https://cdn.jsdelivr.net/gh/dinghy421/alist-web@raw/main/images/README/banner.png" height="100" width="273" ></div> 
+<div style="text-align:center;"> <img src="https://cdn.jsdelivr.net/gh/dinghy421/alist-web@refs/heads/main/images/README/banner.png" height="100" width="273" ></div> 
 
 ----------------
 <center>DINGHY云存储</center>
