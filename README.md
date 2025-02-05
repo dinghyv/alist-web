@@ -1,4 +1,4 @@
-<center> <img src="https://github.com/dinghy421/alist-web/blob/main/images/README/banner.png" height="100" width="273" ></center>
+<div style="text-align:center;"> <img src="https://github.com/dinghy421/alist-web/blob/main/images/README/banner.png" height="100" width="273" ></div> 
 
 ----------------
 <center>DINGHY云存储</center>
