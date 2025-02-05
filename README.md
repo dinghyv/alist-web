@@ -1,4 +1,4 @@
-<center> <img src="http://cdnjson.com/images/2025/01/26/banner.png" height="100" width="273" ></center>
+<center> <img src="https://github.com/dinghy421/alist-web/blob/main/images/README/banner.png" height="100" width="273" ></center>
 
 ----------------
 <center>DINGHY云存储</center>
@@ -88,7 +88,7 @@
 <details> 
 <summary><b>☕Buy Me a Cup of Coffee</b></summary>
 <br />
-<img src="https://th.vyhd.xyz/file/AgACAgQAAyEGAASQmrSmAAMbZ5WnRHGp-Ehfo4RaRIvgnFdnp2QAApTFMRsMbbFQk3C6mm8QfFwBAAMCAAN5AAM2BA.png" height="350" width="350" >
+<img src="https://github.com/dinghy421/alist-web/blob/main/images/README/CODE.png" height="350" width="350" >
 </details>
 
 
