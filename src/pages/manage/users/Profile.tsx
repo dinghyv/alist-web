@@ -145,6 +145,8 @@ const Profile = () => {
             >
               <AlertIcon mr="$2_5" />
               <AlertTitle mr="$2_5">{t("users.guest-tips")}</AlertTitle>
+              <Text>{t("Access Denied！洗洗睡吧不公开")}</Text>
+              <Text>{t("点击左侧回到主页")}</Text>
               <AlertDescription>{t("users.modify_nothing")}</AlertDescription>
             </Alert>
             <HStack spacing="$2">
@@ -158,6 +160,7 @@ const Profile = () => {
               >
                 {t("global.go_login")}
               </Text>
+              <img src="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/05/67a30753633a0.jpeg" width="70%" height ="70%"></img>
             </HStack>
           </>
         }
