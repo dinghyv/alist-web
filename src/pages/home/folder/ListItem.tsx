@@ -12,7 +12,7 @@ import {
   selectIndex,
 } from "~/store"
 import { ObjType, StoreObj } from "~/types"
-import { bus, formatDate, getFileSize, hoverColor } from "~/utils"
+import { bus, getFileSize, hoverColor } from "~/utils"
 import { getIconByObj } from "~/utils/icon"
 import {
   ItemCheckbox,
@@ -21,9 +21,9 @@ import {
 } from "./helper"
 
 export interface Col {
-  name: string
-  textAlign: "left" | "right"
-  w: any
+  name: string;
+  textAlign: "left" | "right";
+  w: string | { "@initial": string; "@md": string }; // 支持字符串或响应式对象
 }
 
 // 仅保留文件名和大小两列
@@ -43,6 +43,12 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
   const { isMouseSupported } = useSelectWithMouse()
   const isShouldOpenItem = useOpenItemWithCheckbox()
   const filenameStyle = () => local["list_item_filename_overflow"]
+
+  // 确保 cols 数组不为空
+  if (!cols || cols.length === 0) {
+    throw new Error("cols array is not defined or empty");
+  }
+
   return (
     <Motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -144,7 +150,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
             {props.obj.name}
           </Text>
         </HStack>
-        <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
+        <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign}>
           {getFileSize(props.obj.size)}
         </Text>
       </HStack>
