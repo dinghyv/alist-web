@@ -8,7 +8,6 @@ import {
   checkboxOpen,
   getMainColor,
   local,
-  OrderBy,
   selectAll,
   selectIndex,
 } from "~/store"
@@ -22,15 +21,14 @@ import {
 } from "./helper"
 
 export interface Col {
-  name: OrderBy
+  name: string // 简化类型定义
   textAlign: "left" | "right"
   w: any
 }
 
 export const cols: Col[] = [
-  { name: "name", textAlign: "left", w: { "@initial": "76%", "@md": "50%" } },
-  { name: "size", textAlign: "right", w: { "@initial": "24%", "@md": "17%" } },
-  { name: "modified", textAlign: "right", w: { "@initial": 0, "@md": "33%" } },
+  { name: "name", textAlign: "left", w: { "@initial": "70%", "@md": "70%" } },
+  { name: "size", textAlign: "right", w: { "@initial": "30%", "@md": "30%" } },
 ]
 
 export const ListItem = (props: { obj: StoreObj; index: number }) => {
@@ -93,9 +91,6 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
         }}
         onContextMenu={(e: MouseEvent) => {
           batch(() => {
-            // if (!checkboxOpen()) {
-            //   toggleCheckbox();
-            // }
             selectAll(false)
             selectIndex(props.index, true, true)
           })
@@ -105,7 +100,6 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
         <HStack class="name-box" spacing="$1" w={cols[0].w}>
           <Show when={checkboxOpen()}>
             <ItemCheckbox
-              // colorScheme="neutral"
               on:click={(e: MouseEvent) => {
                 e.stopPropagation()
               }}
@@ -148,17 +142,9 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
           >
             {props.obj.name}
           </Text>
-        </HStack>
+        </Hstack>
         <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
           {getFileSize(props.obj.size)}
-        </Text>
-        <Text
-          class="modified"
-          display={{ "@initial": "none", "@md": "inline" }}
-          w={cols[2].w}
-          textAlign={cols[2].textAlign as any}
-        >
-          {formatDate(props.obj.modified)}
         </Text>
       </HStack>
     </Motion.div>
