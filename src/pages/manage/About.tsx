@@ -4,7 +4,7 @@ import { useT, useManageTitle } from "~/hooks"
 
 const fetchReadme = async () =>
   await (
-    await fetch("https://lsky-storage.vyhd.xyz/API/Markdown/About/Readme.md")
+    await fetch("https://cdn.jsdelivr.net/gh/dinghy421/alist-web@refs/heads/main/README.md")
   ).text()
 
 const About = () => {
