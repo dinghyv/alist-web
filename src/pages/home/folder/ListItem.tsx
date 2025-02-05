@@ -8,11 +8,12 @@ import {
   checkboxOpen,
   getMainColor,
   local,
+  OrderBy,
   selectAll,
   selectIndex,
 } from "~/store"
 import { ObjType, StoreObj } from "~/types"
-import { bus, getFileSize, hoverColor } from "~/utils"
+import { bus, formatDate, getFileSize, hoverColor } from "~/utils"
 import { getIconByObj } from "~/utils/icon"
 import {
   ItemCheckbox,
@@ -21,15 +22,15 @@ import {
 } from "./helper"
 
 export interface Col {
-  name: string;
-  textAlign: "left" | "right";
-  w: string | { "@initial": string; "@md": string }; // 支持字符串或响应式对象
+  name: OrderBy
+  textAlign: "left" | "right"
+  w: any
 }
 
-// 仅保留文件名和大小两列
 export const cols: Col[] = [
-  { name: "name", textAlign: "left", w: "70%" }, // 文件名左对齐，占70%宽度
-  { name: "size", textAlign: "right", w: "30%" }, // 大小右对齐，占30%宽度
+  { name: "name", textAlign: "left", w: { "@initial": "76%", "@md": "50%" } },
+  { name: "size", textAlign: "right", w: { "@initial": "24%", "@md": "17%" } },
+  { name: "modified", textAlign: "right", w: { "@initial": 0, "@md": "33%" } },
 ]
 
 export const ListItem = (props: { obj: StoreObj; index: number }) => {
@@ -43,12 +44,6 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
   const { isMouseSupported } = useSelectWithMouse()
   const isShouldOpenItem = useOpenItemWithCheckbox()
   const filenameStyle = () => local["list_item_filename_overflow"]
-
-  // 确保 cols 数组正确定义
-  if (!cols || cols.length < 2) {
-    throw new Error("cols array is not defined or does not have enough items");
-  }
-
   return (
     <Motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -98,15 +93,19 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
         }}
         onContextMenu={(e: MouseEvent) => {
           batch(() => {
+            // if (!checkboxOpen()) {
+            //   toggleCheckbox();
+            // }
             selectAll(false)
             selectIndex(props.index, true, true)
           })
           show(e, { props: props.obj })
         }}
       >
-        <HStack class="name-box" spacing="$1" w={cols[0]?.w || "70%"}>
+        <HStack class="name-box" spacing="$1" w={cols[0].w}>
           <Show when={checkboxOpen()}>
             <ItemCheckbox
+              // colorScheme="neutral"
               on:click={(e: MouseEvent) => {
                 e.stopPropagation()
               }}
@@ -150,8 +149,16 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
             {props.obj.name}
           </Text>
         </HStack>
-        <Text class="size" w={cols[1]?.w || "30%"} textAlign={cols[1]?.textAlign || "right"}>
+        <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
           {getFileSize(props.obj.size)}
+        </Text>
+        <Text
+          class="modified"
+          display={{ "@initial": "none", "@md": "inline" }}
+          w={cols[2].w}
+          textAlign={cols[2].textAlign as any}
+        >
+          {formatDate(props.obj.modified)}
         </Text>
       </HStack>
     </Motion.div>
