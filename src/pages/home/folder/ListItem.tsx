@@ -152,14 +152,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
         <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
           {getFileSize(props.obj.size)}
         </Text>
-        <Text
-          class="modified"
-          display={{ "@initial": "none", "@md": "inline" }}
-          w={cols[2].w}
-          textAlign={cols[2].textAlign as any}
-        >
-          {formatDate(props.obj.modified)}
-        </Text>
+
       </HStack>
     </Motion.div>
   )
