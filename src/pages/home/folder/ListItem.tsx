@@ -12,7 +12,7 @@ import {
   selectIndex,
 } from "~/store"
 import { ObjType, StoreObj } from "~/types"
-import { bus, formatDate, getFileSize, hoverColor } from "~/utils"
+import { bus, getFileSize, hoverColor } from "~/utils"
 import { getIconByObj } from "~/utils/icon"
 import {
   ItemCheckbox,
@@ -21,15 +21,15 @@ import {
 } from "./helper"
 
 export interface Col {
-  name: string
-  textAlign: "left" | "right"
-  w: any
+  name: string;
+  textAlign: "left" | "right";
+  w: string | { "@initial": string; "@md": string }; // 支持字符串或响应式对象
 }
 
 // 仅保留文件名和大小两列
 export const cols: Col[] = [
-  { name: "name", textAlign: "left", w: { "@initial": "76%", "@md": "70%" } },
-  { name: "size", textAlign: "right", w: { "@initial": "24%", "@md": "30%" } },
+  { name: "name", textAlign: "left", w: "70%" }, // 文件名左对齐，占70%宽度
+  { name: "size", textAlign: "right", w: "30%" }, // 大小右对齐，占30%宽度
 ]
 
 export const ListItem = (props: { obj: StoreObj; index: number }) => {
@@ -43,6 +43,12 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
   const { isMouseSupported } = useSelectWithMouse()
   const isShouldOpenItem = useOpenItemWithCheckbox()
   const filenameStyle = () => local["list_item_filename_overflow"]
+
+  // 确保 cols 数组正确定义
+  if (!cols || cols.length < 2) {
+    throw new Error("cols array is not defined or does not have enough items");
+  }
+
   return (
     <Motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -98,7 +104,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
           show(e, { props: props.obj })
         }}
       >
-        <HStack class="name-box" spacing="$1" w={cols[0].w}>
+        <HStack class="name-box" spacing="$1" w={cols[0]?.w || "70%"}>
           <Show when={checkboxOpen()}>
             <ItemCheckbox
               on:click={(e: MouseEvent) => {
@@ -144,7 +150,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
             {props.obj.name}
           </Text>
         </HStack>
-        <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
+        <Text class="size" w={cols[1]?.w || "30%"} textAlign={cols[1]?.textAlign || "right"}>
           {getFileSize(props.obj.size)}
         </Text>
       </HStack>
