@@ -52,30 +52,7 @@ const ListLayout = () => {
       w="$full"
       spacing="$1"
     >
-      <HStack class="title" w="$full" p="$2">
-        <HStack w={cols[0].w} spacing="$1">
-          <Show when={checkboxOpen()}>
-            <ItemCheckbox
-              checked={allChecked()}
-              indeterminate={isIndeterminate()}
-              onChange={(e: any) => {
-                selectAll(e.target.checked as boolean)
-              }}
-            />
-          </Show>
-          <Text {...itemProps(cols[0])}>{t(`home.obj.${cols[0].name}`)}</Text>
-        </HStack>
-        <Text w={cols[1].w} {...itemProps(cols[1])}>
-          {t(`home.obj.${cols[1].name}`)}
-        </Text>
-        <Text
-          w={cols[2].w}
-          {...itemProps(cols[2])}
-          display={{ "@initial": "none", "@md": "inline" }}
-        >
-          {t(`home.obj.${cols[2].name}`)}
-        </Text>
-      </HStack>
+
       <For each={objStore.objs}>
         {(obj, i) => {
           return <ListItem obj={obj} index={i()} />
