@@ -21,14 +21,15 @@ import {
 } from "./helper"
 
 export interface Col {
-  name: string // 简化类型定义
+  name: string
   textAlign: "left" | "right"
   w: any
 }
 
+// 仅保留文件名和大小两列
 export const cols: Col[] = [
-  { name: "name", textAlign: "left", w: { "@initial": "70%", "@md": "70%" } },
-  { name: "size", textAlign: "right", w: { "@initial": "30%", "@md": "30%" } },
+  { name: "name", textAlign: "left", w: "70%" }, // 文件名左对齐，占70%宽度
+  { name: "size", textAlign: "right", w: "30%" }, // 大小右对齐，占30%宽度
 ]
 
 export const ListItem = (props: { obj: StoreObj; index: number }) => {
@@ -142,7 +143,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
           >
             {props.obj.name}
           </Text>
-        </Hstack>
+        </HStack>
         <Text class="size" w={cols[1].w} textAlign={cols[1].textAlign as any}>
           {getFileSize(props.obj.size)}
         </Text>
