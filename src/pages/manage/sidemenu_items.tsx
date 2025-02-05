@@ -180,7 +180,7 @@ export const side_menu_items: SideMenuItem[] = [
   {
     title: "manage.sidemenu.docs",
     icon: FaSolidBook,
-    to: "https://.vyhd.xyz",
+    to: "https://ac.vyhd.xyz",
     role: UserRole.GUEST,
     external: true,
   },

@@ -27,11 +27,7 @@ export interface Col {
   w: any
 }
 
-export const cols: Col[] = [
-  { name: "name", textAlign: "left", w: { "@initial": "76%", "@md": "70%" } },
-  { name: "size", textAlign: "right", w: { "@initial": "24%", "@md": "30%" } },
-  { name: "modified", textAlign: "right", w: { "@initial": 0, "@md": "0%" } },
-]
+
 
 export const ListItem = (props: { obj: StoreObj; index: number }) => {
   const { isHide } = useUtil()
