@@ -148,7 +148,7 @@ const Profile = () => {
               <Text>{t("点击左侧回到主页")}</Text>
             </Alert>
             <HStack spacing="$2">
-              <img src="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/05/67a30753633a0.jpeg" width="70%" height ="70%"></img>
+              <img src="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/05/67a30753633a0.jpeg" width="100%" height ="100%"></img>
             </HStack>
           </>
         }
