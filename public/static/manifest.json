@@ -2,10 +2,10 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "AList",
+  "name": "Dinghy云存储",
   "icons": [
     {
-      "src": "https://jsd.nn.ci/gh/alist-org/logo@main/logo.png",
+      "src": "https://s3.cdnjson.com/images/2025/01/26/Logo1.png",
       "sizes": "512x512",
       "type": "image/png"
     }
