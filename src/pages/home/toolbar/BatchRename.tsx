@@ -22,7 +22,7 @@ import {
   notify,
 } from "~/utils"
 import { createSignal, For, onCleanup, Show } from "solid-js"
-import { selectedObjs } from "~/store"
+import { objStore } from "~/store"
 import { RenameObj } from "~/types"
 import { RenameItem } from "~/pages/home/toolbar/RenameItem"
 
@@ -72,7 +72,7 @@ export const BatchRename = () => {
 
     let matchNames: RenameObj[]
     if (type() === "1") {
-      matchNames = selectedObjs()
+      matchNames = objStore.objs
         .filter((obj) => obj.name.match(srcName()))
         .map((obj) => {
           const renameObj: RenameObj = {
@@ -83,7 +83,7 @@ export const BatchRename = () => {
         })
     } else {
       let tempNum = newName()
-      matchNames = selectedObjs().map((obj) => {
+      matchNames = objStore.objs.map((obj) => {
         let suffix = ""
         const lastDotIndex = obj.name.lastIndexOf(".")
         if (lastDotIndex !== -1) {
@@ -121,10 +121,18 @@ export const BatchRename = () => {
         <ModalOverlay />
         <ModalContent>
           {/* <ModalCloseButton /> */}
-          <ModalHeader>{t("home.toolbar.batch_rename")}</ModalHeader>
+          <Show when={type() === "1"}>
+            <ModalHeader>{t("home.toolbar.regular_rename")}</ModalHeader>
+          </Show>
+          <Show when={type() === "2"}>
+            <ModalHeader>
+              {t("home.toolbar.sequential_renaming_desc")}
+            </ModalHeader>
+          </Show>
           <ModalBody>
             <RadioGroup
               defaultValue="1"
+              style={{ margin: "20px 0" }}
               onChange={(event) => {
                 setType(event)
                 if (event === "1") {
@@ -140,14 +148,6 @@ export const BatchRename = () => {
               </HStack>
             </RadioGroup>
             <VStack spacing="$2">
-              <p style={{ margin: "10px 0" }}>
-                <Show when={type() === "1"}>
-                  {t("home.toolbar.regular_rename")}
-                </Show>
-                <Show when={type() === "2"}>
-                  {t("home.toolbar.sequential_renaming_desc")}
-                </Show>
-              </p>
               <Input
                 id="modal-input1" // Update id to "modal-input1" for first input
                 type={"string"}

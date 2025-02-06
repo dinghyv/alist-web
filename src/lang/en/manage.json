@@ -1,6 +1,6 @@
 {
   "sidemenu": {
-    "dashboard": "iSweet • Admin",
+    "dashboard": "Dashboard",
     "settings": "Settings",
     "site": "Site",
     "style": "Style",
@@ -15,7 +15,6 @@
     "tasks": "Tasks",
     "upload": "Upload",
     "copy": "Copy",
-    "decompress": "Decompress",
     "backup-restore": "Backup & Restore",
     "home": "Home",
     "indexes": "Indexes",
@@ -26,7 +25,7 @@
     "s3": "S3",
     "ftp": "FTP"
   },
-  "title": "iSweet • Admin",
+  "title": "AList Manage",
   "not_admin": "You are not admin user, please login with admin account.",
   "logout_success": "Logout successfully",
   "send": "Send",

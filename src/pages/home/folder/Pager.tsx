@@ -23,7 +23,10 @@ const LoadMore = () => {
   const { loadMore, allLoaded } = usePath()
   const t = useT()
   return (
-    <Show when={!allLoaded()} fallback={<Text>{t("home.no_more")}</Text>}>
+    <Show
+      when={!allLoaded()}
+      fallback={<Text fontStyle="italic">{t("home.no_more")}</Text>}
+    >
       <Button onClick={loadMore}>{t("home.load_more")}</Button>
     </Show>
   )
@@ -52,7 +55,10 @@ const AutoLoadMore = () => {
     ob.disconnect()
   })
   return (
-    <Show when={!allLoaded()} fallback={<Text>{t("home.no_more")}</Text>}>
+    <Show
+      when={!allLoaded()}
+      fallback={<Text fontStyle="italic">{t("home.no_more")}</Text>}
+    >
       <FullLoading py="$2" size="md" thickness={3} ref={el!} />
     </Show>
   )

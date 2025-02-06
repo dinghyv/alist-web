@@ -11,12 +11,12 @@ type Uploader = {
 
 const AllUploads: Uploader[] = [
   {
-    name: "流式",
+    name: "Stream",
     upload: StreamUpload,
     provider: /.*/,
   },
   {
-    name: "表单",
+    name: "Form",
     upload: FormUpload,
     provider: /.*/,
   },

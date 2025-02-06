@@ -25,9 +25,8 @@ export const Layout = () => {
     <Menu>
       <MenuTrigger
         as={IconButton}
-        tips="home_tolayouts"
         color={getMainColor()}
-        bgColor={changeColor(getMainColor(), { alpha: 0.05 })}
+        bgColor={changeColor(getMainColor(), { alpha: 0.15 })}
         _hover={{
           bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
         }}
@@ -52,7 +51,6 @@ export const Layout = () => {
         <For each={Object.entries(layouts)}>
           {(item) => (
             <MenuItem
-              color={getMainColor()}
               icon={<Dynamic component={item[1]} />}
               onSelect={() => {
                 setLayout(item[0] as LayoutType)

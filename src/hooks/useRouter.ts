@@ -7,7 +7,6 @@ import {
 } from "@solidjs/router"
 import { createMemo } from "solid-js"
 import { encodePath, joinBase, log, pathDir, pathJoin, trimBase } from "~/utils"
-import { clearHistory } from "~/store"
 
 const useRouter = () => {
   const navigate = useNavigate()
@@ -27,14 +26,14 @@ const useRouter = () => {
         path = joinBase(path)
       }
       log("to:", path)
-      clearHistory(decodeURIComponent(path))
       navigate(path, options)
     },
     replace: (to: string) => {
       navigate(encodePath(pathJoin(pathDir(location.pathname), to), true))
     },
     pushHref: (to: string): string => {
-      return encodePath(pathJoin(pathname(), to))
+      const href = encodePath(pathJoin(pathname(), to))
+      return href
     },
     back: () => {
       navigate(-1)

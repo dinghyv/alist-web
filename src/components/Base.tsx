@@ -16,6 +16,7 @@ import {
   SelectValue,
   Icon,
 } from "@hope-ui/solid"
+import { SwitchColorMode } from "./SwitchColorMode"
 import { ComponentProps, For, mergeProps, Show } from "solid-js"
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from "solid-icons/ai"
 import { hoverColor } from "~/utils"
@@ -47,6 +48,11 @@ export const Error = (props: {
         >
           {props.msg}
         </Heading>
+        <Show when={!props.disableColor}>
+          <Flex mt="$2" justifyContent="end">
+            <SwitchColorMode />
+          </Flex>
+        </Show>
       </Box>
     </Center>
   )

@@ -22,7 +22,6 @@ import { IoCopy, IoHome, IoMagnetOutline } from "solid-icons/io"
 import { Component, lazy } from "solid-js"
 import { Group, UserRole } from "~/types"
 import { FaSolidBook, FaSolidDatabase } from "solid-icons/fa"
-import { TbArchive } from "solid-icons/tb"
 
 export type SideMenuItem = SideMenuItemProps & {
   component?: Component
@@ -109,7 +108,7 @@ export const side_menu_items: SideMenuItem[] = [
       {
         title: "manage.sidemenu.offline_download",
         icon: IoMagnetOutline,
-        to: "/@manage/tasks/offline_download",
+        to: "/@manage/tasks/aria2",
         role: UserRole.GENERAL,
         component: lazy(() => import("./tasks/offline_download")),
       },
@@ -138,13 +137,6 @@ export const side_menu_items: SideMenuItem[] = [
         to: "/@manage/tasks/copy",
         role: UserRole.GENERAL,
         component: lazy(() => import("./tasks/Copy")),
-      },
-      {
-        title: "manage.sidemenu.decompress",
-        icon: TbArchive,
-        to: "/@manage/tasks/decompress",
-        role: UserRole.GENERAL,
-        component: lazy(() => import("./tasks/Decompress")),
       },
     ],
   },
@@ -177,6 +169,20 @@ export const side_menu_items: SideMenuItem[] = [
     to: "/@manage/backup-restore",
     icon: FaSolidDatabase,
     component: lazy(() => import("./backup-restore")),
+  },
+  {
+    title: "manage.sidemenu.about",
+    icon: BsFront,
+    to: "/@manage/about",
+    role: UserRole.GUEST,
+    component: lazy(() => import("./About")),
+  },
+  {
+    title: "manage.sidemenu.docs",
+    icon: FaSolidBook,
+    to: "https://alist.nn.ci",
+    role: UserRole.GUEST,
+    external: true,
   },
   {
     title: "manage.sidemenu.home",

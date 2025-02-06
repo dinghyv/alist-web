@@ -25,7 +25,7 @@ export const CenterIcon = <C extends ElementType = "svg">(
           outline: "none",
         }}
         cursor="pointer"
-        boxSize="$8"
+        boxSize="$7"
         rounded="$md"
         p={operations[props.name]?.p ? "$1_5" : "$1"}
         _active={{

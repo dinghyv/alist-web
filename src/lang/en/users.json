@@ -11,9 +11,7 @@
     "webdav_read": "Webdav read",
     "webdav_manage": "Webdav manage",
     "ftp_read": "FTP read",
-    "ftp_manage": "FTP manage",
-    "read_archives": "Read archives",
-    "decompress": "Decompress"
+    "ftp_manage": "FTP manage"
   },
   "username": "Username",
   "password": "Password",
@@ -46,14 +44,5 @@
   "webauthn": "WebAuthn",
   "add_webauthn": "Add a Webauthn credential",
   "add_webauthn_success": "Webauthn credential successfully added!",
-  "webauthn_not_supported": "Webauthn is not supported in your browser or you are in an unsafe origin",
-  "ssh_keys": {
-    "heading": "SSH keys",
-    "add_heading": "Add new SSH key",
-    "title": "Title",
-    "key": "Key",
-    "fingerprint": "Fingerprint",
-    "last_used": "Last used time",
-    "operation": "Operation"
-  }
+  "webauthn_not_supported": "Webauthn is not supported in your browser or you are in an unsafe origin"
 }

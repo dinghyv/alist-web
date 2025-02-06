@@ -25,6 +25,7 @@ import {
   hashPwd,
 } from "~/utils"
 import { PResp, Resp } from "~/types"
+import LoginBg from "./LoginBg"
 import { createStorageSignal } from "@solid-primitives/storage"
 import { getSetting, getSettingBool } from "~/store"
 import { SSOLogin } from "./SSOLogin"
@@ -36,14 +37,13 @@ import {
   supported,
   CredentialRequestOptionsJSON,
 } from "@github/webauthn-json/browser-ponyfill"
-import { Link } from "@solidjs/router"
 
 const Login = () => {
   const logos = getSetting("logo").split("\n")
   const logo = useColorModeValue(logos[0], logos.pop())
   const t = useT()
   const title = createMemo(() => {
-    return `${getSetting("site_title")}`
+    return `${t("login.login_to")} ${getSetting("site_title")}`
   })
   useTitle(title)
   const bgColor = useColorModeValue("white", "$neutral1")
@@ -244,32 +244,15 @@ const Login = () => {
             >
               {t("login.remember")}
             </Checkbox>
-            <Text
-              color="$success9"
-              as={Link}
-              href={`https://peifeng.li/request-account-authorization`}
-            >
-              {t("login.get_authorization")}
+            <Text as="a" target="_blank" href={t("login.forget_url")}>
+              {t("login.forget")}
             </Text>
           </Flex>
         </Show>
         <HStack w="$full" spacing="$2">
           <Show when={!useauthn()}>
             <Button
-              w="$full"
-              colorScheme="danger"
-              onClick={() => {
-                changeToken()
-                to(
-                  decodeURIComponent(searchParams.redirect || base_path || "/"),
-                  true,
-                )
-              }}
-            >
-              {t("login.use_guest")}
-            </Button>
-            <Button
-              colorScheme="warning"
+              colorScheme="primary"
               w="$full"
               onClick={() => {
                 if (needOpt()) {
@@ -283,12 +266,7 @@ const Login = () => {
               {t("login.clear")}
             </Button>
           </Show>
-          <Button
-            colorScheme="success"
-            w="$full"
-            loading={loading()}
-            onClick={Login}
-          >
+          <Button w="$full" loading={loading()} onClick={Login}>
             {t("login.login")}
           </Button>
         </HStack>
@@ -301,6 +279,19 @@ const Login = () => {
             {ldapLoginTips}
           </Checkbox>
         </Show>
+        <Button
+          w="$full"
+          colorScheme="accent"
+          onClick={() => {
+            changeToken()
+            to(
+              decodeURIComponent(searchParams.redirect || base_path || "/"),
+              true,
+            )
+          }}
+        >
+          {t("login.use_guest")}
+        </Button>
         <Flex
           mt="$2"
           justifyContent="space-evenly"
@@ -308,6 +299,7 @@ const Login = () => {
           color="$neutral10"
           w="$full"
         >
+          <SwitchLanguageWhite />
           <SwitchColorMode />
           <SSOLogin />
           <Show when={AuthnSignEnabled}>
@@ -319,9 +311,9 @@ const Login = () => {
               onclick={AuthnSwitch}
             />
           </Show>
-          <SwitchLanguageWhite />
         </Flex>
       </VStack>
+      <LoginBg />
     </Center>
   )
 }

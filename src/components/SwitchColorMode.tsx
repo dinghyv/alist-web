@@ -7,12 +7,12 @@ const SwitchColorMode = () => {
   const { toggleColorMode } = useColorMode()
   const icon = useColorModeValue(
     {
-      size: "$7",
+      size: "$8",
       component: Moon,
       p: "$0_5",
     },
     {
-      size: "$7",
+      size: "$8",
       component: Sun,
       p: "$0_5",
     },

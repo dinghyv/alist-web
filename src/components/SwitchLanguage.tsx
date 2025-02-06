@@ -12,7 +12,8 @@ import {
 import { useI18n } from "@solid-primitives/i18n"
 import { createSignal, For, Show } from "solid-js"
 import { langMap, languages, loadedLangs, setLang } from "~/app/i18n"
-import { FaSolidLanguage } from "solid-icons/fa"
+// import { TbLanguageHiragana } from "solid-icons/tb";
+import { IoLanguageOutline } from "solid-icons/io"
 import { Portal } from "solid-js/web"
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
@@ -75,5 +76,5 @@ export const SwitchLanguage = <C extends ElementType = "button">(
 }
 
 export const SwitchLanguageWhite = () => (
-  <SwitchLanguage as={FaSolidLanguage} boxSize="$7" />
+  <SwitchLanguage as={IoLanguageOutline} boxSize="$8" />
 )

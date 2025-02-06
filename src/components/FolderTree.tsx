@@ -27,7 +27,6 @@ import {
   Setter,
   createEffect,
   on,
-  JSXElement,
 } from "solid-js"
 import { useFetch, useT, useUtil } from "~/hooks"
 import { getMainColor, password } from "~/store"
@@ -193,9 +192,6 @@ export type ModalFolderChooseProps = {
   type?: string
   defaultValue?: string
   loading?: boolean
-  footerSlot?: JSXElement
-  children?: JSXElement
-  header: string
 }
 export const ModalFolderChoose = (props: ModalFolderChooseProps) => {
   const t = useT()
@@ -215,11 +211,8 @@ export const ModalFolderChoose = (props: ModalFolderChooseProps) => {
       <ModalOverlay />
       <ModalContent>
         {/* <ModalCloseButton /> */}
-        <ModalHeader w="$full" css={{ overflowWrap: "break-word" }}>
-          {props.header}
-        </ModalHeader>
+        <ModalHeader>{t("home.toolbar.choose_dst_folder")}</ModalHeader>
         <ModalBody>
-          {props.children}
           <FolderTree
             onChange={setValue}
             handle={(h) => setHandler(h)}
@@ -227,7 +220,6 @@ export const ModalFolderChoose = (props: ModalFolderChooseProps) => {
           />
         </ModalBody>
         <ModalFooter display="flex" gap="$2">
-          <Show when={props.footerSlot}>{props.footerSlot}</Show>
           <Button onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
           </Button>

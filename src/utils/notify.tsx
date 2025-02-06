@@ -1,4 +1,13 @@
-import { Box, notificationService } from "@hope-ui/solid"
+import {
+  Box,
+  CloseButton,
+  // Alert,
+  // AlertDescription,
+  // AlertIcon,
+  // AlertTitle,
+  // CloseButton,
+  notificationService,
+} from "@hope-ui/solid"
 import { JSXElement } from "solid-js"
 import { alphaBgColor, firstUpperCase } from "."
 
@@ -10,7 +19,7 @@ const notify = {
           <Box
             css={{
               display: "flex",
-              backdropFilter: "blur(15px)",
+              backdropFilter: "blur(8px)",
               backgroundColor: alphaBgColor(),
               boxShadow: "$md",
               borderRadius: "$lg",
@@ -19,6 +28,14 @@ const notify = {
           >
             <div style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
               <div style={{ margin: "auto" }}>{element}</div>
+            </div>
+            <div style={{ display: "inline-block", padding: "5px" }}>
+              <CloseButton
+                style={{ float: "right" }}
+                right="$2"
+                top="$2"
+                onClick={props.close}
+              />
             </div>
           </Box>
         )
@@ -29,7 +46,6 @@ const notify = {
     notificationService.show({
       status: "success",
       title: firstUpperCase(message),
-      closable: false,
       // render: (props) => (
       //   <Alert status="success" shadow="$md">
       //     <AlertIcon mr="$2_5" />
@@ -43,7 +59,6 @@ const notify = {
     notificationService.show({
       status: "danger",
       title: firstUpperCase(message),
-      closable: false,
       // render: (props) => (
       //   <Alert status="danger" shadow="$md">
       //     <AlertIcon mr="$2_5" />
@@ -57,7 +72,6 @@ const notify = {
     notificationService.show({
       status: "info",
       title: firstUpperCase(message),
-      closable: false,
       // render: (props) => (
       //   <Alert status="info" shadow="$md">
       //     <AlertIcon mr="$2_5" />
@@ -71,7 +85,6 @@ const notify = {
     notificationService.show({
       status: "warning",
       title: firstUpperCase(message),
-      closable: false,
       // render: (props) => (
       //   <Alert status="warning" shadow="$md">
       //     <AlertIcon mr="$2_5" />

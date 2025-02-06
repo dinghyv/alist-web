@@ -4,5 +4,4 @@ export enum Type {
   Bool = "bool",
   Text = "text",
   Number = "number",
-  Float = "float",
 }

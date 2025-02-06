@@ -6,9 +6,7 @@ import {
   State,
   getPagination,
   objStore,
-  hasHistory,
-  recoverHistory,
-  clearHistory,
+  recoverScroll,
   me,
 } from "~/store"
 import {
@@ -24,7 +22,6 @@ import { useRouter } from "./useRouter"
 
 let first_fetch = true
 
-let cancelObj: Canceler
 let cancelList: Canceler
 export function addOrUpdateQuery(
   key: string,
@@ -72,28 +69,17 @@ let globalPage = 1
 export const getGlobalPage = () => {
   return globalPage
 }
-export const setGlobalPage = (page: number) => {
-  const pagination = getPagination()
-  globalPage = page
-  if (pagination.type === "pagination") {
-    addOrUpdateQuery("page", page)
-  }
-  console.log("setGlobalPage", globalPage)
-}
 export const resetGlobalPage = () => {
-  setGlobalPage(1)
+  const pagination = getPagination()
+  globalPage = 1
+  if (pagination.type === "pagination") {
+    addOrUpdateQuery("page", 1)
+  }
+  console.log("resetGlobalPage", globalPage)
 }
 export const usePath = () => {
   const { pathname, to } = useRouter()
-  const [, getObj] = useFetch((path: string) =>
-    fsGet(
-      path,
-      password(),
-      new axios.CancelToken((c) => {
-        cancelObj = c
-      }),
-    ),
-  )
+  const [, getObj] = useFetch((path: string) => fsGet(path, password()))
   const pagination = getPagination()
   if (pagination.type === "pagination" && getQueryVariable("page")) {
     globalPage = parseInt(getQueryVariable("page"))
@@ -116,7 +102,7 @@ export const usePath = () => {
         page.index,
         page.size,
         arg?.force,
-        new axios.CancelToken((c) => {
+        new axios.CancelToken(function executor(c) {
           cancelList = c
         }),
       )
@@ -141,16 +127,13 @@ export const usePath = () => {
   // if not, fetch get then determine if it is dir or file
   const handlePathChange = (path: string, rp?: boolean, force?: boolean) => {
     log(`handle [${path}] change`)
-    cancelObj?.()
     cancelList?.()
     retry_pass = rp ?? false
-    ObjStore.setErr("")
-    if (hasHistory(path)) {
-      return recoverHistory(path)
-    } else if (IsDirRecord[path]) {
-      return handleFolder(path, globalPage, undefined, undefined, force)
+    handleErr("")
+    if (IsDirRecord[path]) {
+      handleFolder(path, globalPage, undefined, undefined, force)
     } else {
-      return handleObj(path)
+      handleObj(path)
     }
   }
 
@@ -192,12 +175,12 @@ export const usePath = () => {
     if (size !== undefined && pagination.type === "all") {
       size = undefined
     }
+    globalPage = index ?? 1
     ObjStore.setState(append ? State.FetchingMore : State.FetchingObjs)
     const resp = await getObjs({ path, index, size, force })
     handleRespWithoutNotify(
       resp,
       (data) => {
-        globalPage = index ?? 1
         if (append) {
           appendObjs(data.content)
         } else {
@@ -209,6 +192,9 @@ export const usePath = () => {
         ObjStore.setWrite(data.write)
         ObjStore.setProvider(data.provider)
         ObjStore.setState(State.Folder)
+        if (!(append && (index ?? 1) > 1)) {
+          recoverScroll(path)
+        }
       },
       handleErr,
     )
@@ -221,52 +207,27 @@ export const usePath = () => {
         notify.error(msg)
       }
     } else {
-      const basePath = me().base_path
-      if (
-        first_fetch &&
-        basePath != "/" &&
-        pathname().includes(basePath) &&
-        msg.endsWith("object not found")
-      ) {
+      if (first_fetch && msg.endsWith("object not found")) {
         first_fetch = false
-        to(pathname().replace(basePath, ""))
+        to(pathname().replace(me().base_path, ""))
         return
       }
-      if (code === undefined || code >= 0) {
-        ObjStore.setErr(msg)
-      }
+      ObjStore.setErr(msg)
     }
   }
   const pageChange = (index?: number, size?: number, append = false) => {
-    return handleFolder(pathname(), index, size, append)
-  }
-  const loadMore = () => {
-    return pageChange(globalPage + 1, undefined, true)
+    handleFolder(pathname(), index, size, append)
   }
   return {
     handlePathChange: handlePathChange,
     setPathAs: setPathAs,
-    refresh: async (retry_pass?: boolean, force?: boolean) => {
-      const path = pathname()
-      const scroll = window.scrollY
-      clearHistory(path)
-      if (
-        pagination.type === "load_more" ||
-        pagination.type === "auto_load_more"
-      ) {
-        const page = globalPage
-        resetGlobalPage()
-        await handlePathChange(path, retry_pass, force)
-        while (globalPage < page) {
-          await loadMore()
-        }
-      } else {
-        await handlePathChange(path, retry_pass, force)
-      }
-      window.scroll({ top: scroll, behavior: "smooth" })
+    refresh: (retry_pass?: boolean, force?: boolean) => {
+      handlePathChange(pathname(), retry_pass, force)
     },
     pageChange: pageChange,
-    loadMore: loadMore,
+    loadMore: () => {
+      pageChange(globalPage + 1, undefined, true)
+    },
     allLoaded: () => globalPage >= Math.ceil(objStore.total / pagination.size),
   }
 }

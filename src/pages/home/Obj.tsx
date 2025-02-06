@@ -1,22 +1,16 @@
-import { Text, useColorModeValue, VStack } from "@hope-ui/solid"
+import { useColorModeValue, VStack } from "@hope-ui/solid"
 import {
-  createEffect,
-  createSignal,
-  lazy,
-  Match,
-  on,
   Suspense,
   Switch,
+  Match,
+  lazy,
+  createEffect,
+  on,
+  createSignal,
 } from "solid-js"
-import { Error, FullLoading, LinkWithBase } from "~/components"
-import { resetGlobalPage, useObjTitle, usePath, useRouter, useT } from "~/hooks"
-import {
-  objStore,
-  password,
-  recordHistory,
-  setPassword,
-  /*layout,*/ State,
-} from "~/store"
+import { FullLoading, Error } from "~/components"
+import { resetGlobalPage, useObjTitle, usePath, useRouter } from "~/hooks"
+import { objStore, recordScroll, /*layout,*/ State } from "~/store"
 
 const Folder = lazy(() => import("./folder/Folder"))
 const File = lazy(() => import("./file/File"))
@@ -29,19 +23,18 @@ export { objBoxRef }
 
 let first = true
 export const Obj = () => {
-  const t = useT()
   const cardBg = useColorModeValue("white", "$neutral3")
   const { pathname } = useRouter()
-  const { handlePathChange, refresh } = usePath()
+  const { handlePathChange } = usePath()
   let lastPathname = pathname()
   createEffect(
     on(pathname, (pathname) => {
       useObjTitle()
       if (!first) {
-        recordHistory(lastPathname)
         resetGlobalPage()
       }
       first = false
+      recordScroll(lastPathname, window.scrollY)
       handlePathChange(pathname)
       lastPathname = pathname
     }),
@@ -73,23 +66,7 @@ export const Obj = () => {
             </Show> */}
           </Match>
           <Match when={objStore.state === State.NeedPassword}>
-            <Password
-              title={t("home.input_password")}
-              password={password}
-              setPassword={setPassword}
-              enterCallback={() => refresh(true)}
-            >
-              <Text>{t("global.have_account")}</Text>
-              <Text
-                color="$info9"
-                as={LinkWithBase}
-                href={`/@login?redirect=${encodeURIComponent(
-                  location.pathname,
-                )}`}
-              >
-                {t("global.go_login")}
-              </Text>
-            </Password>
+            <Password />
           </Match>
           <Match
             when={[State.Folder, State.FetchingMore].includes(objStore.state)}

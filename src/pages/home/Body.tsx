@@ -20,7 +20,10 @@ export const Body = () => {
         <Readme files={["header.md", "top.md"]} fromMeta="header" />
         <Nav />
         <Obj />
-        <Readme files={["footer.md", "bottom.md"]} fromMeta="readme" />
+        <Readme
+          files={["readme.md", "footer.md", "bottom.md"]}
+          fromMeta="readme"
+        />
         <Sidebar />
       </VStack>
     </Container>

@@ -1,20 +1,9 @@
-import {
-  Box,
-  createDisclosure,
-  VStack,
-  notificationService,
-} from "@hope-ui/solid"
+import { Box, createDisclosure, VStack } from "@hope-ui/solid"
 import { createMemo, Show } from "solid-js"
 import { RightIcon } from "./Icon"
+import { CgMoreO } from "solid-icons/cg"
 import { TbCheckbox } from "solid-icons/tb"
-import {
-  objStore,
-  selectAll,
-  State,
-  toggleCheckbox,
-  userCan,
-  me,
-} from "~/store"
+import { objStore, State, toggleCheckbox, userCan } from "~/store"
 import { bus } from "~/utils"
 import { operations } from "./operations"
 import { IoMagnetOutline } from "solid-icons/io"
@@ -24,8 +13,6 @@ import { usePath } from "~/hooks"
 import { Motion } from "@motionone/solid"
 import { isTocVisible, setTocDisabled } from "~/components"
 import { BiSolidBookContent } from "solid-icons/bi"
-import { VsHeart } from "solid-icons/vs"
-import { UserMethods } from "~/types"
 
 export const Right = () => {
   const { isOpen, onToggle } = createDisclosure({
@@ -36,10 +23,9 @@ export const Right = () => {
   const margin = createMemo(() => (isOpen() ? "$4" : "$5"))
   const isFolder = createMemo(() => objStore.state === State.Folder)
   const { refresh } = usePath()
-
   return (
     <Box
-      class="right-toolbar-box"
+      class="left-toolbar-box"
       pos="fixed"
       right={margin()}
       bottom={margin()}
@@ -49,8 +35,7 @@ export const Right = () => {
         fallback={
           <RightIcon
             class="toolbar-toggle"
-            tips="more"
-            as={VsHeart}
+            as={CgMoreO}
             onClick={() => {
               onToggle()
             }}
@@ -58,7 +43,7 @@ export const Right = () => {
         }
       >
         <VStack
-          class="right-toolbar"
+          class="left-toolbar"
           p="$1"
           rounded="$lg"
           spacing="$1"
@@ -66,20 +51,20 @@ export const Right = () => {
           // bgColor={useColorModeValue("white", "$neutral4")()}
           bgColor="$neutral1"
           as={Motion.div}
-          initial={{ opacity: 0, scale: 0, y: 300 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0, y: 300 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.6 }}
           // @ts-ignore
           transition={{ duration: 0.2 }}
         >
-          <VStack spacing="$1" class="right-toolbar-in">
+          <VStack spacing="$1" class="left-toolbar-in">
             <Show when={isFolder() && (userCan("write") || objStore.write)}>
               {/* <Add /> */}
               <RightIcon
-                as={AiOutlineCloudUpload}
-                tips="upload"
+                as={RiSystemRefreshLine}
+                tips="refresh"
                 onClick={() => {
-                  bus.emit("tool", "upload")
+                  refresh(undefined, true)
                 }}
               />
               <RightIcon
@@ -105,11 +90,24 @@ export const Right = () => {
                 }}
               />
               <RightIcon
+                as={operations.remove_empty_directory.icon}
+                tips="remove_empty_directory"
+                onClick={() => {
+                  bus.emit("tool", "removeEmptyDirectory")
+                }}
+              />
+              <RightIcon
                 as={operations.batch_rename.icon}
                 tips="batch_rename"
                 onClick={() => {
-                  selectAll(true)
                   bus.emit("tool", "batchRename")
+                }}
+              />
+              <RightIcon
+                as={AiOutlineCloudUpload}
+                tips="upload"
+                onClick={() => {
+                  bus.emit("tool", "upload")
                 }}
               />
             </Show>
@@ -133,33 +131,19 @@ export const Right = () => {
               />
             </Show>
             <RightIcon
-              as={RiSystemRefreshLine}
-              tips="refresh"
+              tips="toggle_checkbox"
+              as={TbCheckbox}
+              onClick={toggleCheckbox}
+            />
+            <RightIcon
+              as={AiOutlineSetting}
+              tips="local_settings"
               onClick={() => {
-                refresh(undefined, true)
-                notificationService.show({
-                  status: "success",
-                  description: "目录刷新成功",
-                  closable: false,
-                })
+                bus.emit("tool", "local_settings")
               }}
             />
-            <Show when={UserMethods.is_admin(me())}>
-              <RightIcon
-                tips="toggle_checkbox"
-                as={TbCheckbox}
-                onClick={toggleCheckbox}
-              />
-              <RightIcon
-                as={AiOutlineSetting}
-                tips="browser_setting"
-                onClick={() => {
-                  bus.emit("tool", "local_settings")
-                }}
-              />
-            </Show>
           </VStack>
-          <RightIcon tips="close" as={VsHeart} onClick={onToggle} />
+          <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>
       </Show>
     </Box>
