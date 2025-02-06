@@ -28,7 +28,7 @@ const Preview = () => {
       name: obj.name,
       artist: "•••",
       url: rawLink(obj, true),
-      cover: getSetting("audio_cover") || "https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a43f917e96c.png",
+      cover: getSetting("audio_cover") || "/images/audio.png",
       lrc: lrc,
     }
     if (objStore.provider === "NeteaseMusic") {
