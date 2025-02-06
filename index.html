@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-title" content="AList" />
     <link
       rel="apple-touch-icon"
-      href="https://pf.vyhd.xyz/i/2024/12/10/6757e41fc7e61.png"
+      href="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a459f16fdba.webp"
     />
     <script
       src="https://g.alicdn.com/IMM/office-js/1.1.5/aliyun-web-office-sdk.min.js"
@@ -22,7 +22,7 @@
     <link
       rel="shortcut icon"
       type="image/ico"
-      href="https://pf.vyhd.xyz/i/2024/12/10/6757e41fc7e61.png"
+      href="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a459f16fdba.webp"
     />
 
 <meta charset="UTF-8">
@@ -43,7 +43,7 @@
 
 /*白天背景图*/
  .hope-ui-light {
-    background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.3)), url('https://pf.vyhd.xyz/i/2024/12/10/6757e78936a42.jpg');
+    background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.3)), url('https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a45b87ddbc9.webp');
     background-repeat:no-repeat;
     background-size:cover;
     background-attachment:fixed;
@@ -52,7 +52,7 @@
 }
 /*夜间背景图*/
  .hope-ui-dark {
-    background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.3)), url('https://pf.vyhd.xyz/i/2024/12/10/6757e78936a42.jpg');
+    background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.3)), url('https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a45b87ddbc9.webp');
     background-repeat:no-repeat;
     background-size:cover;
     background-attachment:fixed;
@@ -241,7 +241,7 @@
 function simpleEncrypt(text) {
   return btoa(text.split('').reverse().join(''));
 }
-const correctPassword = "eWhnbmlk";
+const correctPassword = "NTQwMg==";
 if (localStorage.getItem('pan_password') !== correctPassword) {
   checkPassword("success", "输入密码进入");
 }
@@ -253,17 +253,17 @@ function checkPassword(icon, title) {
     html: `
 
       <p id="ip-info" style="background-color: #2c3e50; color: white; padding: 10px; border-radius: 8px;">
-        正在获取您的IP地址...
+        请输入校验码访问
       </p>
      <p id="info" style="color: red; padding: 10px; border-radius: 8px;">
-        本站为不公开网站，请勿尝试无权登录！
+        校验码为：2045
       </p>
       <p id="hint" style="color: white; padding: 10px; border-radius: 8px;">
-        输入密码以访问本站
+        输入校验码以访问本站
       </p>
     `,
     icon: icon,
-    imageUrl: 'https://pf.vyhd.xyz/i/2024/12/10/6757e41fc7e61.png',
+    imageUrl: 'https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a459f16fdba.webp',
     imageWidth: 250,
     imageHeight: 250,
     input: 'password',
@@ -341,6 +341,29 @@ document.addEventListener("DOMContentLoaded", () => {
     
     <div id="root"></div>
    <script src="/src/main.tsx" type="module"></script>
-    <!-- customize body -->
+   <script type="text/javascript">
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("8/24/2022 10:28:00");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        Z = A-895;
+        runtime_span.innerHTML = "已运行 " + Z + "天" + B + "时" + C + "分" + D + "秒"
+    }
+    show_runtime();
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center;background-color: rgba(255,255,255,.3);">
+©2025 DINGHY    |     访问量 <span id="busuanzi_value_site_pv"></span> 次    |   <span id="runtime_span"></span>
+</div> 
   </body>
 </html>
