@@ -1,99 +1,25 @@
-<center> <img src="http://cdnjson.com/images/2025/01/26/banner.png" height="100" width="273" ></center>
+# iSweet 基于 alist 修改定制版
 
-----------------
-<center>DINGHY云存储</center>
+## Docker 镜像拉取
+### Docker Hub
+#### docker pull leolitaly/isweet:latest
 
-<center>基于<a href="https://alist.nn.ci/">Alist</a>开源项目的文件分享平台。</center>
+### Docker Hub 访问有问题的可以用 ghcr.io 源拉取镜像
+#### docker pull ghcr.io/li-peifeng/isweet:latest
 
-<center><a href="https://me.vyhd.xyz/">访问作者主页</a>      |    <a href="https://cd.vyhd.xyz">V云盘影视剧分享平台</a>    |   <a href="https://th.vyhd.xyz">V图云</a>    |   <a href="https://s.vyhd.xyz">短链接生成</a>  </center>
+### 阿里云 Docker
+#### Docker Hub 和 ghcr.io 访问有问题的国内用户可以用此源拉取镜像
+#### docker pull crpi-lzr94m9idb4j2kpi.cn-shanghai.personal.cr.aliyuncs.com/isweet/isweet:latest
 
-<details> 
-<summary> <b>🥯日志信息</b> </summary>
-<br />
-<table>
-    <tr>
-        <td><b>😋V2.1 Patch Notes</b></td>
-        <td><b>更新内容</b></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>1.优化了部分文件结构的显示。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>2.添加了来自网络的更多资源。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>3.项目已部署到Pages.</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>4.对国内外*用户进行了分流。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>5.更换了CloudFlare的DNS，大概能提升网站响应速度（不过有可能更慢*）。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>6.对Onedrive进行了CloudFlare Worker加速，现在国内用户也能高速访问这些文件了（折中之举）。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>7.更换了国内云服务，国内加载速度可提升50倍（质的飞跃）。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td><b>✒To-do（未来计划实现）</b></td>
-        <td>1.更换网站IP提供方，实现更快的访问速度（这才是真正的质的飞跃，不过没钱换）。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>2.用户注册、登录功能添加（感觉没屁用）。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>3.基于第二点的WebDav挂载。</td>
-    </tr>
-    <tr>
-        <td><b>🎯注释</b></td>
-        <td>*1.本站所有国内外都代指美利坚合众国的国内外。</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>*2.如果访问速度更慢了，点击<a href="https://www.vyhd.xyz">我的主页</a>，内有最新网址发布。</td>
-    </tr>
-</table>
-</details>
-<details> 
-<summary><b>📌注意事项</b></summary>
-<br />
-<p>1.WebDav服务器地址：https://nd.vyhd.xyz 如需挂载服务，请联系我的<a href="mailto:dinghyv@gmail.com">个人邮箱</a>。<br>
-    <br />
-2.以在线浏览为主，禁止高强度下载。<br><br />
-3.如果网页播放体验不佳（可能是因为Alist的视频播放器太卡了），可以配合Potplayer（<a href="https://potplayer.tv/?lang=zh_CN">Windows</a>）或VLC播放器（<a href="https://mirrors.aliyun.com/videolan/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk">安卓</a> |<a href="https://apps.apple.com/cn/app/vlc-media-player/id650377962">iOS</a>）使用资源。<br><br />
-4.本站资源皆来自互联网，本站不提供资源存储、下载服务，请在获取资源后24小时内删除。<br><br />
-5.部分文件会显示文件名包含敏感词，只需将文件重新命名一下再刷新网页即可使用，因此已开放访客重命名功能。<br>
-</p>
-</details>
-<details> 
-<summary><b>📟联系邮箱</b></summary>
-<br />
-<a href="mailto:dinghyv@gmail.com">dinghyv@gmail.com</a><br />
-</details>
-<details> 
-<summary><b>☕Buy Me a Cup of Coffee</b></summary>
-<br />
-<img src="https://th.vyhd.xyz/file/AgACAgQAAyEGAASQmrSmAAMbZ5WnRHGp-Ehfo4RaRIvgnFdnp2QAApTFMRsMbbFQk3C6mm8QfFwBAAMCAAN5AAM2BA.png" height="350" width="350" >
-</details>
+## 预览图
+### 更新功能详情请看更新日志。
+### light
+![IMG_0116](https://github.com/user-attachments/assets/6e248f9e-1f0f-4280-b209-2a137252f69b)
+![IMG_0119](https://github.com/user-attachments/assets/caa65fd7-9c7f-43c5-b312-cc6ec5fa45fc)
+![IMG_0118](https://github.com/user-attachments/assets/6837459c-13f6-4b8d-af6c-d5dc415640bc)
+![IMG_0117](https://github.com/user-attachments/assets/ca96e8ff-15b3-42e2-9fa5-c9485043efa5)
 
-> 2024-2025 [DINGHYV](https://www.vyhd.xyz/) 
->
-> Powered by [CloudFlare](https://www.cloudflare.com/)
->
-> United States - Buffalo
-
+### dark
+![IMG_0115](https://github.com/user-attachments/assets/4a2a5a04-cce8-4566-8476-e6bd8868cb7d)
+![IMG_0114](https://github.com/user-attachments/assets/c4e88d97-9629-4411-a65c-a4c41d75691b)
+![IMG_0113](https://github.com/user-attachments/assets/69994ec3-2861-4f15-83b7-619ec7ecff79)

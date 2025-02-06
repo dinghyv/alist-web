@@ -15,6 +15,7 @@ import { PEmptyResp, PResp, User, UserMethods, UserPermissions } from "~/types"
 import { createStore } from "solid-js/store"
 import { For, Show } from "solid-js"
 import { me, setMe } from "~/store"
+import { PublicKeys } from "./PublicKeys"
 
 const Permission = (props: {
   can: boolean
@@ -132,18 +133,9 @@ const AddOrEdit = () => {
             </For>
           </Flex>
         </FormControl>
-        <FormControl w="fit-content" display="flex">
-          <Checkbox
-            css={{ whiteSpace: "nowrap" }}
-            id="disabled"
-            onChange={(e: any) => setUser("disabled", e.currentTarget.checked)}
-            color="$neutral10"
-            fontSize="$sm"
-            checked={user.disabled}
-          >
-            {t(`users.disabled`)}
-          </Checkbox>
-        </FormControl>
+        <Show when={id && !UserMethods.is_guest(user)}>
+          <PublicKeys isMine={false} userId={parseInt(id)} />
+        </Show>
         <Button
           loading={okLoading()}
           onClick={async () => {
@@ -159,6 +151,18 @@ const AddOrEdit = () => {
         >
           {t(`global.${id ? "save" : "add"}`)}
         </Button>
+        <FormControl w="fit-content" display="flex">
+          <Checkbox
+            css={{ whiteSpace: "nowrap" }}
+            id="disabled"
+            onChange={(e: any) => setUser("disabled", e.currentTarget.checked)}
+            color="$neutral10"
+            fontSize="$sm"
+            checked={user.disabled}
+          >
+            {t(`users.disabled`)}
+          </Checkbox>
+        </FormControl>
       </VStack>
     </MaybeLoading>
   )

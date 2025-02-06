@@ -19,7 +19,7 @@ import {
   FaSolidCompactDisc,
   FaSolidLink,
 } from "solid-icons/fa"
-import { IoFolder } from "solid-icons/io"
+import { IoInfinite } from "solid-icons/io"
 import { ImAndroid } from "solid-icons/im"
 import { Obj, ObjType } from "~/types"
 import { ext } from "./path"
@@ -28,11 +28,11 @@ import {
   VscodeIconsFileTypePhotoshop2,
 } from "~/components"
 import { SiAsciinema } from "solid-icons/si"
+import { getArchiveExtensions } from "~/store/archive"
 
 const iconMap = {
   "dmg,ipa,plist,tipa": BsApple,
   "exe,msi": BsWindows,
-  "zip,gz,rar,7z,tar,jar,xz": BsFileEarmarkZipFill,
   apk: ImAndroid,
   db: FaSolidDatabase,
   md: BsMarkdownFill,
@@ -56,10 +56,13 @@ export const getIconByTypeAndExt = (type: number, ext: string) => {
         return icon
       }
     }
+    if (getArchiveExtensions().includes(ext)) {
+      return BsFileEarmarkZipFill
+    }
   }
   switch (type) {
     case ObjType.FOLDER:
-      return IoFolder
+      return IoInfinite
     // case ObjType.OFFICE: {
     //   if (ext === "doc" || ext === "docx") {
     //     return BsFileEarmarkWordFill;
