@@ -26,11 +26,9 @@ const Preview = () => {
     }
     const audio = {
       name: obj.name,
-      artist: "Unknown",
+      artist: "•••",
       url: rawLink(obj, true),
-      cover:
-        obj.thumb ||
-        getSetting("audio_cover") || "/images/audio.png",
+      cover: getSetting("audio_cover") || "https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a43f917e96c.png",
       lrc: lrc,
     }
     if (objStore.provider === "NeteaseMusic") {
