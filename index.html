@@ -205,6 +205,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
+    <script src="/src/main.tsx" type="module"></script>
     <script type="text/javascript">
         function show_runtime() {
             window.setTimeout("show_runtime()", 1000);
@@ -220,7 +221,7 @@
             C = Math.floor((b - B) * 60);
             D = Math.floor((c - C) * 60);
             Z = A-895;
-            runtime_span.innerHTML = "运行 " + Z + "天" + B + "时" + C + "分" + D + "秒"
+            runtime_span.innerHTML = "已运行 " + Z + "天" + B + "时" + C + "分" + D + "秒"
         }
         show_runtime();
     </script>
