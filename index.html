@@ -205,70 +205,6 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <script src="/src/main.tsx" type="module"></script>
-    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" rel=" stylesheet ">
-    <div id="customize" style="display:none; text-align:center;">
-        <br />
-        <div style="font-size:15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-            <span class="nav-item">
-                <a class="nav-link" href="https://github.com/Xhofe/alist" target="_blank">
-                    <i class="fa fa-heart" style="color:#FFFFFF;" aria-hidden="true"></i>
-                    AList |
-                </a>
-            </span>
-            <span class="nav-item" style="margin-bottom: 5px;">
-                <a class="nav-link" href="@manage" target="_blank">
-                    <i class="fa fa-gear" style="color:#FFFFFF;" aria-hidden="true"></i>
-                    管理后台
-                </a>
-            </span> <br/>
-            <span class="nav-item">
-                <a class="nav-link" href="https://ac.vyhd.xyz/" target="_blank">
-                    <i class="fa-solid fa-copyright" style="color:#FFFFFF" aria-hidden="true"></i>
-                    关于我 |
-                </a>
-            </span>
-            <span class="nav-item">
-                <a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">
-                    <i class="fa fa-balance-scale" style="color:#FFFFFF;" aria-hidden="true"></i>
-                    苏 ICP 备 2025114514 号 
-                </a>
-            </span>
-    
-        </div>
-        <br />
-    </div>
-    <script>
-        let interval = setInterval(() => {
-            if (document.querySelector(".footer")) {
-                document.querySelector("#customize").style.display = "";
-                clearInterval(interval);
-            }
-        }, 200);
-    </script>
-    
-    <style type="text/css">
-        .footer {
-            display: none !important;
-        }
-    
-        .hope-c-ivMHWx-dvmlqS-cv {
-            color: #FFFFFF !important;
-        }
-    
-        .hope-c-PJLV-igVoCQk-css {
-            color: #FFFFFF !important;
-        }
-    
-        .hope-c-PJLV-ilcHcHe-css {
-            color: #FFFFFF !important;
-        }
-    
-        .hope-c-PJLV-ieavQQG-css {
-            color: #FFFFFF !important;
-        }
-    </style>
-    
     <script type="text/javascript">
         function show_runtime() {
             window.setTimeout("show_runtime()", 1000);
@@ -284,14 +220,14 @@
             C = Math.floor((b - B) * 60);
             D = Math.floor((c - C) * 60);
             Z = A-895;
-            runtime_span.innerHTML = "本站已运行 " + Z + "天" + B + "小时" + C + "分" + D + "秒"
+            runtime_span.innerHTML = "运行 " + Z + "天" + B + "时" + C + "分" + D + "秒"
         }
         show_runtime();
     </script>
     
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <div style="text-align:center;background-color: rgba(255,255,255,.3);">
-    ©2025 DINGHY    |     本站总访问量 <span id="busuanzi_value_site_pv"></span> 次    |   <span id="runtime_span"></span>
+    ©2025 DINGHY    |     访问量 <span id="busuanzi_value_site_pv"></span> 次    |   <span id="runtime_span"></span>
     </div>    
   </body>
 </html>
