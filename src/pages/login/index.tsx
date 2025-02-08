@@ -300,7 +300,7 @@ const Login = () => {
           w="$full"
         >
           <SwitchLanguageWhite />
-          <SwitchColorMode />
+          
           <SSOLogin />
           <Show when={AuthnSignEnabled}>
             <Icon
