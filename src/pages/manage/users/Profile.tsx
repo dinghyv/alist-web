@@ -144,7 +144,7 @@ const Profile = () => {
               }}
             >
               <AlertIcon mr="$2_5" />
-              <Text>{t("Access Denied！洗洗睡吧不公开")}</Text>
+              <Text>{t("Access Denied! 您暂无访问权限！")}</Text>
               <Text>{t("点击左侧回到主页")}</Text>
             </Alert>
             <HStack spacing="$2">
