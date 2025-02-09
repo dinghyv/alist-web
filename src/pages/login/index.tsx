@@ -39,8 +39,6 @@ import {
 } from "@github/webauthn-json/browser-ponyfill"
 
 const Login = () => {
-  const logos = getSetting("logo").split("\n")
-  const logo = useColorModeValue(logos[0], logos.pop())
   const t = useT()
   const title = createMemo(() => {
     return `${getSetting("site_title")}`
