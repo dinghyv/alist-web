@@ -136,7 +136,13 @@ export const Right = () => {
               as={TbCheckbox}
               onClick={toggleCheckbox}
             />
-            
+            <RightIcon
+              as={AiOutlineSetting}
+              tips="local_settings"
+              onClick={() => {
+                bus.emit("tool", "local_settings")
+              }}
+            />
           </VStack>
           <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>

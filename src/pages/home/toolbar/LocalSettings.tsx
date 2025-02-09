@@ -120,6 +120,7 @@ export const LocalSettings = () => {
           <Center mt="$4">
             <HStack spacing="$4" p="$2" color="$neutral11">
               <SwitchLanguageWhite />
+              <SwitchColorMode />
             </HStack>
           </Center>
         </DrawerBody>

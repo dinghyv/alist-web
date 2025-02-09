@@ -33,7 +33,7 @@ const Manage = () => {
           <Center>
             <HStack spacing="$4" p="$2" color="$neutral11">
               <SwitchLanguageWhite />
-              
+              <SwitchColorMode />
             </HStack>
           </Center>
         </Box>

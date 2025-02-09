@@ -2,7 +2,7 @@ import { globalCss, HopeThemeConfig } from "@hope-ui/solid"
 import { hoverColor } from "~/utils"
 
 const theme: HopeThemeConfig = {
-  initialColorMode: "dark",
+  initialColorMode: "system",
   lightTheme: {
     colors: {
       // background: "$neutral2",
