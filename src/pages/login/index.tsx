@@ -43,7 +43,7 @@ const Login = () => {
   const logo = useColorModeValue(logos[0], logos.pop())
   const t = useT()
   const title = createMemo(() => {
-    return `${t("login.login_to")} ${getSetting("site_title")}`
+    return `${getSetting("site_title")}`
   })
   useTitle(title)
   const bgColor = useColorModeValue("white", "$neutral1")
@@ -300,7 +300,7 @@ const Login = () => {
           w="$full"
         >
           <SwitchLanguageWhite />
-          <SwitchColorMode />
+          
           <SSOLogin />
           <Show when={AuthnSignEnabled}>
             <Icon
