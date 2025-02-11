@@ -9,7 +9,6 @@ import { AiOutlineCloudDownload } from "solid-icons/ai"
 import { ImMoveUp } from "solid-icons/im"
 import { BiRegularRename } from "solid-icons/bi"
 import { HiOutlineFolderRemove } from "solid-icons/hi"
-import { RiSystemRefreshLine } from "solid-icons/ri"
 
 export interface Operations {
   [key: string]: {
@@ -19,7 +18,6 @@ export interface Operations {
   }
 }
 export const operations: Operations = {
-  new_refresh: { icon: RiSystemRefreshLine, color: "$accent9" },
   rename: { icon: CgRename, color: "$accent9" },
   copy: { icon: TbCopy, color: "$success9" },
   move: { icon: TbFileArrowRight, color: "$warning9" },
