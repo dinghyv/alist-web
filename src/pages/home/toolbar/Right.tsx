@@ -136,7 +136,15 @@ export const Right = () => {
               as={TbCheckbox}
               onClick={toggleCheckbox}
             />
-            
+            <Show when={userCan("write")}>
+              <RightIcon
+                as={AiOutlineSetting}
+                tips="local_settings"
+                onClick={() => {
+                  window.open("http://your-link-here.com", "_blank")
+                }}
+              />
+            </Show>
           </VStack>
           <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>
