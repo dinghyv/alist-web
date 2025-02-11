@@ -19,6 +19,7 @@ import { BsPlayCircleFill } from "solid-icons/bs"
 import { isArchive } from "~/store/archive"
 
 const { refresh } = usePath()
+
 const ItemContent = (props: { name: string }) => {
   const t = useT()
   return (
@@ -86,16 +87,13 @@ export const ContextMenu = () => {
         </Item>
       </Show>
       <Show when={oneChecked()}>
-        
-      <Item
-        onClick={() => {
-          refresh(undefined, true)
-        }}
+        <Item
+          onClick={() => {
+            refresh(undefined, true)
+          }}
         >
           <ItemContent name="new_refresh" />
         </Item>
-
-        
         <Item
           onClick={({ props }) => {
             if (props.is_dir) {
