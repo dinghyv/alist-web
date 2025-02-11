@@ -4,10 +4,10 @@
   "password-tips": "输入您的密码",
   "otp-tips": "输入您的 OTP 代码",
   "remember": "记住账号",
-  "forget": "没啥好看的",
+  "forget": "我的主页",
   "forget_url": "https://www.vyhd.xyz",
   "clear": "清除",
   "login": "登录",
-  "use_guest": "返回主页",
+  "use_guest": "返回本站主页",
   "success": "登录成功"
 }

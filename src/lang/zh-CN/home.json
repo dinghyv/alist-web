@@ -69,7 +69,7 @@
     "package_download-tips": "正在下载，请稍候不要关闭页面",
     "playlist_download": "播放列表下载",
     "upload": "上传",
-    "local_settings": "本地设置",
+    "local_settings": "管理后台",
     "recursive_move": "聚合移动",
     "recursive_move_directory-tips": "您确定要将当前文件夹及其子文件夹中的所有文件移动到指定的文件夹吗？",
     "remove_empty_directory": "移除空的子目录",
