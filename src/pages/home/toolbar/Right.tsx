@@ -7,12 +7,13 @@ import { objStore, selectAll, State, toggleCheckbox, userCan } from "~/store"
 import { bus } from "~/utils"
 import { operations } from "./operations"
 import { IoMagnetOutline } from "solid-icons/io"
-import { AiOutlineCloudUpload, AiOutlineSetting } from "solid-icons/ai"
+import { AiOutlineCloudUpload, AiOutlineSetting, AiOutlineUser } from "solid-icons/ai"
 import { RiSystemRefreshLine } from "solid-icons/ri"
 import { usePath } from "~/hooks"
 import { Motion } from "@motionone/solid"
 import { isTocVisible, setTocDisabled } from "~/components"
 import { BiSolidBookContent } from "solid-icons/bi"
+
 
 export const Right = () => {
   const { isOpen, onToggle } = createDisclosure({
@@ -136,12 +137,20 @@ export const Right = () => {
               as={TbCheckbox}
               onClick={toggleCheckbox}
             />
+            <Show when={!userCan("write")}>
+              <RightIcon
+                tips="index_login"
+                as={AiOutlineUser}
+                onClick={() => {
+                  window.open("https://cloud.vyhd.xyz/@login", "_blank")
+                }}
+            />
             <Show when={userCan("write")}>
               <RightIcon
                 as={AiOutlineSetting}
                 tips="local_settings"
                 onClick={() => {
-                  window.open("http://your-link-here.com", "_blank")
+                  window.open("https://cloud.vyhd.xyz/@manage", "_blank")
                 }}
               />
             </Show>
