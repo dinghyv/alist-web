@@ -145,6 +145,7 @@ export const Right = () => {
                   window.open("https://cloud.vyhd.xyz/@login", "_blank")
                 }}
             />
+            </Show>
             <Show when={userCan("write")}>
               <RightIcon
                 as={AiOutlineSetting}
