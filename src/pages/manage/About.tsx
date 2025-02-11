@@ -4,7 +4,7 @@ import { useT, useManageTitle } from "~/hooks"
 
 const fetchReadme = async () =>
   await (
-    await fetch("https://cdn.jsdelivr.net/gh/dinghyv/alist-web@main/README.md")
+    await fetch("https://cdn.jsdelivr.net/gh/dinghy421/alist-web@refs/heads/main/README.md")
   ).text()
 
 const About = () => {
