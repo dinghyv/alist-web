@@ -5,6 +5,7 @@ import { HStack, Icon, Text, useColorMode, Image } from "@hope-ui/solid"
 import { operations } from "../toolbar/operations"
 import { For, Show } from "solid-js"
 import { bus, convertURL, notify } from "~/utils"
+import { usePath } from "~/hooks"
 import { ObjType, UserMethods, UserPermissions } from "~/types"
 import {
   getSettingBool,
@@ -17,6 +18,7 @@ import { players } from "../previews/video_box"
 import { BsPlayCircleFill } from "solid-icons/bs"
 import { isArchive } from "~/store/archive"
 
+const { refresh } = usePath()
 const ItemContent = (props: { name: string }) => {
   const t = useT()
   return (
@@ -84,6 +86,16 @@ export const ContextMenu = () => {
         </Item>
       </Show>
       <Show when={oneChecked()}>
+        
+      <Item
+        onClick={() => {
+          refresh(undefined, true)
+        }}
+        >
+          <ItemContent name="new_refresh" />
+        </Item>
+
+        
         <Item
           onClick={({ props }) => {
             if (props.is_dir) {
