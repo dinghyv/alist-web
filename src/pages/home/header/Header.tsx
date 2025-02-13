@@ -16,7 +16,7 @@ import { Container } from "../Container"
 import { bus } from "~/utils"
 import { Layout } from "./layout"
 import { isMac } from "~/utils/compatibility"
-import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin } from "~/components"
+import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin, VisitAC } from "~/components"
 import { UserMethods, UserRole } from "~/types/user"
 import { me } from "~/store"
 
@@ -101,6 +101,7 @@ export const Header = () => {
                 </HStack>
               </Show>
               <DinghyHomepage />
+              <VisitAC />
               <SendMeEmail />
               <SwitchLanguageWhite />
               <Show when={ifShowAdmin()}>

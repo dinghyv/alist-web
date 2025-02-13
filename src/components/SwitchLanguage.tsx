@@ -20,6 +20,7 @@ import { IoMail, IoSettings } from 'solid-icons/io'
 import { IconButton } from "@hope-ui/solid"
 import { Tooltip } from "@hope-ui/solid"
 import { AiOutlineUser } from "solid-icons/ai"
+import { FaSolidBlog } from 'solid-icons/fa'
 
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
@@ -146,6 +147,21 @@ export const UserAdmin = () => {
         variant="ghost"
       >
         <IoSettings size="1.5em" />
+      </IconButton>
+    </Tooltip>
+  )
+}
+
+export const VisitAC = () => {
+  return (
+    <Tooltip label="DINGHY博客" placement="top">
+      <IconButton 
+        onClick={() => window.open("https://ac.vyhd.xyz", "_blank")}
+        boxSize="$8" 
+        p="$0_5"
+        variant="ghost"
+      >
+        <FaSolidBlog size="1.5em" />
       </IconButton>
     </Tooltip>
   )

@@ -137,31 +137,6 @@ export const Right = () => {
               as={TbCheckbox}
               onClick={toggleCheckbox}
             />
-            <Show when={!userCan("write")}>
-              <RightIcon
-                tips="index_login"
-                as={AiOutlineUser}
-                onClick={() => {
-                  window.open("https://cloud.vyhd.xyz/@login", "_blank")
-                }}
-            />
-            </Show>
-            <Show when={userCan("write")}>
-              <RightIcon
-                as={AiOutlineSetting}
-                tips="local_settings"
-                onClick={() => {
-                  window.open("https://cloud.vyhd.xyz/@manage", "_blank")
-                }}
-              />
-            </Show>
-            <RightIcon
-                tips="email_me"
-                as={IoMail}
-                onClick={() => {
-                  window.open("mailto:dinghyv@gmail.com")
-                }}
-            />
           </VStack>
           <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>
