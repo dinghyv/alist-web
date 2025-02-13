@@ -7,39 +7,7 @@ import { useManageTitle } from "~/hooks"
 type Route = Pick<SideMenuItem, "to" | "component">
 
 const hide_routes: Route[] = [
-  {
-    to: "/storages/add",
-    component: lazy(() => import("./storages/AddOrEdit")),
-  },
-  {
-    to: "/storages/edit/:id",
-    component: lazy(() => import("./storages/AddOrEdit")),
-  },
-  {
-    to: "/users/add",
-    component: lazy(() => import("./users/AddOrEdit")),
-  },
-  {
-    to: "/users/edit/:id",
-    component: lazy(() => import("./users/AddOrEdit")),
-  },
-  {
-    to: "/metas/add",
-    component: lazy(() => import("./metas/AddOrEdit")),
-  },
-  {
-    to: "/metas/edit/:id",
-    component: lazy(() => import("./metas/AddOrEdit")),
-  },
-  {
-    to: "/2fa",
-    component: lazy(() => import("./users/2fa")),
-  },
-  {
-    to: "/messenger",
-    component: lazy(() => import("./messenger/Messenger")),
-  },
-
+  
 ]
 
 const Placeholder = (props: { title: string; to: string }) => {
