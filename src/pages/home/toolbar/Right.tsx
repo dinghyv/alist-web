@@ -31,7 +31,7 @@ export const Right = () => {
       bottom={margin()}
     >
       <Show
-        when={isOpen() && userCan("write")}
+        when={isOpen()}
         fallback={
           <RightIcon
             class="toolbar-toggle"
@@ -42,6 +42,7 @@ export const Right = () => {
           />
         }
       >
+      <Show when={isOpen() && userCan("write")}>
         <VStack
           class="left-toolbar"
           p="$1"
@@ -140,6 +141,12 @@ export const Right = () => {
           <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>
       </Show>
-    </Box>
-  )
-}
+      <Show when={!isOpen()}>
+        <RightIcon
+          class="toolbar-toggle"
+          as={CgMoreO}
+          onClick={() => {
+            onToggle()
+          }}
+        />
+      </Show>
