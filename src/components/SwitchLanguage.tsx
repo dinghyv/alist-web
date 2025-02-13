@@ -84,8 +84,9 @@ export const SwitchLanguage = <C extends ElementType = "button">(
 export const SwitchLanguageWhite = () => {
   return (
     <Tooltip label="切换语言" placement="top">
-      <Button boxSize="$12" p="$3">
+      <Button boxSize="$10" p="$3">
         <SwitchLanguage as={IoLanguageOutline} />
+        <IoLanguageOutline size="2.5em" />
       </Button>
     </Tooltip>
   )
@@ -96,7 +97,7 @@ export const DinghyHomepage = () => {
     <Tooltip label="DINGHY的个人主页" placement="top">
       <Button 
         onClick={() => window.location.href = "https://www.vyhd.xyz"} 
-        boxSize="$12" 
+        boxSize="$10" 
         p="$3"
       >
         <IoBoat size="2.5em" />
@@ -110,7 +111,7 @@ export const SendMeEmail = () => {
     <Tooltip label="给我邮件" placement="top">
       <Button 
         onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
-        boxSize="$12" 
+        boxSize="$10" 
         p="$3"
       >
         <IoMail size="2.5em" />
