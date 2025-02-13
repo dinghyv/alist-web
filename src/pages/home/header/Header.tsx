@@ -14,7 +14,6 @@ import { BsSearch } from "solid-icons/bs"
 import { CenterLoading } from "~/components"
 import { Container } from "../Container"
 import { bus } from "~/utils"
-import { Layout } from "./layout"
 import { isMac } from "~/utils/compatibility"
 import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin, VisitAC } from "~/components"
 import { UserMethods, UserRole } from "~/types/user"
@@ -110,7 +109,6 @@ export const Header = () => {
               <Show when={ifShowLogin()}>
                 <UserLogin />
               </Show>
-              <Layout />
             </Show>
           </HStack>
         </HStack>
