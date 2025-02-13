@@ -10,6 +10,7 @@ import { createMemo, For, Show } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
 import { getSetting, local } from "~/store"
 import { encodePath, hoverColor, joinBase } from "~/utils"
+import { Layout } from "./layout" // 确保正确导入 Layout 组件
 
 export const Nav = () => {
   const { pathname } = useRouter()
@@ -78,7 +79,7 @@ export const Nav = () => {
                 href={joinBase(href)}
                 onMouseEnter={() => setPathAs(path)}
               >
-                {text}
+                {text()}
               </BreadcrumbLink>
               <Show when={!isLast()}>
                 <BreadcrumbSeparator class="nav-separator" />
@@ -87,6 +88,9 @@ export const Nav = () => {
           )
         }}
       </For>
+      <BreadcrumbItem class="nav-item"> {/* 添加 Layout 按钮 */}
+        <Layout />
+      </BreadcrumbItem>
     </Breadcrumb>
   )
 }
