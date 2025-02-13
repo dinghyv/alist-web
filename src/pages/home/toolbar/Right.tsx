@@ -31,7 +31,7 @@ export const Right = () => {
       bottom={margin()}
     >
       <Show
-        when={isOpen()}
+        when={isOpen() && userCan("write")}
         fallback={
           <RightIcon
             class="toolbar-toggle"
