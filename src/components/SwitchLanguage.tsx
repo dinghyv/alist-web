@@ -16,10 +16,10 @@ import { langMap, languages, loadedLangs, setLang } from "~/app/i18n"
 import { IoLanguageOutline } from "solid-icons/io"
 import { Portal } from "solid-js/web"
 import { IoBoat } from 'solid-icons/io'
-import { IoMail } from 'solid-icons/io'
+import { IoMail, IoSettings } from 'solid-icons/io'
 import { IconButton } from "@hope-ui/solid"
 import { Tooltip } from "@hope-ui/solid"
-
+import { AiOutlineUser } from "solid-icons/ai"
 
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
@@ -116,6 +116,36 @@ export const SendMeEmail = () => {
         variant="ghost"
       >
         <IoMail size="1.5em" />
+      </IconButton>
+    </Tooltip>
+  )
+}
+
+export const UserLogin = () => {
+  return (
+    <Tooltip label="账号登录" placement="top">
+      <IconButton 
+        onClick={() => window.location.href = "https://cloud.vyhd.xyz/@login"} 
+        boxSize="$8" 
+        p="$0_5"
+        variant="ghost"
+      >
+        <AiOutlineUser size="1.5em" />
+      </IconButton>
+    </Tooltip>
+  )
+}
+
+export const UserAdmin = () => {
+  return (
+    <Tooltip label="管理后台" placement="top">
+      <IconButton 
+        onClick={() => window.location.href = "https://cloud.vyhd.xyz/@manage"} 
+        boxSize="$8" 
+        p="$0_5"
+        variant="ghost"
+      >
+        <IoSettings size="1.5em" />
       </IconButton>
     </Tooltip>
   )

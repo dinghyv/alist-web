@@ -9,14 +9,16 @@ import {
 } from "@hope-ui/solid"
 import { changeColor } from "seemly"
 import { Show, createMemo } from "solid-js"
-import { getMainColor, getSetting, local, objStore, State } from "~/store"
+import { getMainColor, getSetting, local, objStore, State, getSettingBool } from "~/store"
 import { BsSearch } from "solid-icons/bs"
 import { CenterLoading } from "~/components"
 import { Container } from "../Container"
 import { bus } from "~/utils"
 import { Layout } from "./layout"
 import { isMac } from "~/utils/compatibility"
-import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail} from "~/components"
+import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin} from "~/components"
+import { getSettingBool } from "~/store"
+
 
 
 export const Header = () => {
@@ -31,6 +33,7 @@ export const Header = () => {
         return { position: undefined, zIndex: undefined, top: undefined }
     }
   })
+  const isLoggedIn = getSettingBool("is_logged_in")
 
   return (
     <Center
@@ -56,6 +59,7 @@ export const Header = () => {
             />
           </HStack>
           <HStack class="header-right" spacing="$2">
+
             <Show when={objStore.state === State.Folder}>
               <Show when={getSetting("search_index") !== "none"}>
                 <HStack
@@ -82,9 +86,15 @@ export const Header = () => {
                   </HStack>
                 </HStack>
               </Show>
-              <SwitchLanguageWhite />
               <DinghyHomepage />
               <SendMeEmail />
+              <SwitchLanguageWhite />
+              <Show when={isLoggedIn}>
+                <UserAdmin />
+              </Show>
+              <Show when={!isLoggedIn}>
+                <UserLogin />
+              </Show>
               <Layout />
             </Show>
           </HStack>
