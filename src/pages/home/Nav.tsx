@@ -10,7 +10,7 @@ import { createMemo, For, Show } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
 import { getSetting, local } from "~/store"
 import { encodePath, hoverColor, joinBase } from "~/utils"
-import { Layout } from "./layout" // 确保正确导入 Layout 组件
+import { Layout } from "./header/layout"
 
 export const Nav = () => {
   const { pathname } = useRouter()
