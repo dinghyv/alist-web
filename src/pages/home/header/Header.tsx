@@ -9,14 +9,31 @@ import {
 } from "@hope-ui/solid"
 import { changeColor } from "seemly"
 import { Show, createMemo } from "solid-js"
-import { getMainColor, getSetting, local, objStore, State, getSettingBool } from "~/store"
+import { getMainColor, getSetting, local, objStore, State } from "~/store"
 import { BsSearch } from "solid-icons/bs"
 import { CenterLoading } from "~/components"
 import { Container } from "../Container"
 import { bus } from "~/utils"
 import { Layout } from "./layout"
 import { isMac } from "~/utils/compatibility"
-import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin} from "~/components"
+import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin } from "~/components"
+import { UserMethods, User, UserRole } from "~/types/user"
+
+// 假设你有一个函数 getCurrentUser 来获取当前用户
+const getCurrentUser = (): User | null => {
+  // 这里是获取当前用户的逻辑
+  // 返回一个 User 对象或 null
+  return {
+    id: 1,
+    username: "admin",
+    password: "password",
+    base_path: "/",
+    role: UserRole.ADMIN,
+    permission: 0,
+    sso_id: "",
+    disabled: false,
+  }
+}
 
 export const Header = () => {
   const logos = getSetting("logo").split("\n")
@@ -30,7 +47,8 @@ export const Header = () => {
         return { position: undefined, zIndex: undefined, top: undefined }
     }
   })
-  const isLoggedIn = getSettingBool("is_logged_in")
+
+  const currentUser = getCurrentUser()
 
   return (
     <Center
@@ -56,7 +74,6 @@ export const Header = () => {
             />
           </HStack>
           <HStack class="header-right" spacing="$2">
-
             <Show when={objStore.state === State.Folder}>
               <Show when={getSetting("search_index") !== "none"}>
                 <HStack
@@ -86,10 +103,10 @@ export const Header = () => {
               <DinghyHomepage />
               <SendMeEmail />
               <SwitchLanguageWhite />
-              <Show when={isLoggedIn}>
+              <Show when={currentUser && (UserMethods.is_admin(currentUser) || UserMethods.is_general(currentUser))}>
                 <UserAdmin />
               </Show>
-              <Show when={!isLoggedIn}>
+              <Show when={!currentUser || UserMethods.is_guest(currentUser)}>
                 <UserLogin />
               </Show>
               <Layout />
