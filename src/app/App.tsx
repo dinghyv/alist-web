@@ -101,6 +101,14 @@ const App: Component = () => {
               }
             />
             <Route
+              path="/@article/*"
+              element={
+                <MustUser>
+                  <Article />
+                </MustUser>
+              }
+            />
+            <Route
               path="*"
               element={
                 <MustUser>
