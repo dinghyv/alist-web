@@ -35,17 +35,20 @@ export const side_menu_items: SideMenuItem[] = [
     title: "article.sidemenu.test1",
     icon: BsGearFill,
     to: "/@article/test1",
+    role: UserRole.GUEST,
     children: [
       {
         title: "article.sidemenu.test10",
         icon: BsWindow,
         to: "/@article/test1/test10",
+        role: UserRole.GUEST,
         component: lazy(() => import("./test1/test10")),
       },
       {
         title: "article.sidemenu.style",
         icon: BsPaletteFill,
         to: "/@article/test1/test11",
+        role: UserRole.GUEST,
         component: lazy(() => import("./test1/test11")),
       },
     ],
