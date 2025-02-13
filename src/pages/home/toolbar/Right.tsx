@@ -22,8 +22,8 @@ export const Right = () => {
     <Box
       class="left-toolbar-box"
       pos="fixed"
-      right={margin()}
-      bottom={margin()}
+      right="$4"
+      bottom="$4"
     >
       <VStack
         class="left-toolbar"
