@@ -300,6 +300,8 @@ const Login = () => {
           w="$full"
         >
           <SwitchLanguageWhite />
+          <DinghyHomepage />
+          <SendMeEmail />
           
           <SSOLogin />
           <Show when={AuthnSignEnabled}>

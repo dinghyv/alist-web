@@ -15,6 +15,11 @@ import { langMap, languages, loadedLangs, setLang } from "~/app/i18n"
 // import { TbLanguageHiragana } from "solid-icons/tb";
 import { IoLanguageOutline } from "solid-icons/io"
 import { Portal } from "solid-js/web"
+import { useRouter } from "~/hooks"
+import { FaSolidSailboat } from 'solid-icons/fa'
+import { FiMail } from 'solid-icons/fi'
+import { Button } from "@hope-ui/solid"
+
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
 
@@ -78,3 +83,17 @@ export const SwitchLanguage = <C extends ElementType = "button">(
 export const SwitchLanguageWhite = () => (
   <SwitchLanguage as={IoLanguageOutline} boxSize="$8" />
 )
+
+export const DinghyHomepage = () => {
+  const { to } = useRouter()
+  return (
+    <Button onClick={() => to("https://www.vyhd.xyz")} as={FaSolidSailboat} boxSize="$8" />
+  )
+}
+
+export const SendMeEmail = () => {
+  const { to } = useRouter()
+  return (
+    <Button onClick={() => to("mailto:dinghyv@gmail.com")} as={FiMail} boxSize="$8" />
+  )
+}
