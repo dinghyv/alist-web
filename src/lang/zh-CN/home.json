@@ -33,7 +33,6 @@
     "toggle_markdown_toc": "是否显示大纲",
     "toggle_checkbox": "开关复选框",
     "index_login": "账号登录",
-    "email_me": "给我发邮件",
     "rename": "重命名",
     "input_new_name": "输入一个新名称",
     "only_one-tips": "只能选择一个对象重命名",
@@ -175,4 +174,3 @@
   "get_current_user_failed": "获取当前用户失败： ",
   "Loading storage, please wait": "请稍候，正在加载储存"
 }
-

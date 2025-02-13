@@ -83,6 +83,7 @@ export const Header = () => {
                 </HStack>
               </Show>
               <DinghyHomepage />
+              <SendMeEmail />
               <SwitchLanguageWhite />
               <Layout />
             </Show>
