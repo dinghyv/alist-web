@@ -8,7 +8,7 @@ import {
 
 // deprecated
 const Aria2 = () => {
-  useManageTitle("manage.sidemenu.aria2")
+  useManageTitle("article.sidemenu.aria2")
   return (
     <VStack w="$full" alignItems="start" spacing="$4">
       <TypeTasks

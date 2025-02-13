@@ -8,7 +8,7 @@ import {
 
 // deprecated
 const Qbit = () => {
-  useManageTitle("manage.sidemenu.qbit")
+  useManageTitle("article.sidemenu.qbit")
   return (
     <VStack w="$full" alignItems="start" spacing="$4">
       <TypeTasks

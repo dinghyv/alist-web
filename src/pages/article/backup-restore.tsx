@@ -59,7 +59,7 @@ const BackupRestore = () => {
   const [override, setOverride] = createSignal(false)
   const [password, setPassword] = createSignal("")
   const t = useT()
-  useManageTitle("manage.sidemenu.backup-restore")
+  useManageTitle("article.sidemenu.backup-restore")
   let logRef: HTMLDivElement
   const [log, setLog] = createSignal<
     {
@@ -133,7 +133,7 @@ const BackupRestore = () => {
         (data) => {
           appendLog(
             t("br.success_backup_item", {
-              item: t(`manage.sidemenu.${item.name}`),
+              item: t(`article.sidemenu.${item.name}`),
             }),
             "success",
           )
@@ -158,7 +158,7 @@ const BackupRestore = () => {
         (msg) => {
           appendLog(
             t("br.failed_backup_item", {
-              item: t(`manage.sidemenu.${item.name}`),
+              item: t(`article.sidemenu.${item.name}`),
             }) +
               ":" +
               msg,
@@ -301,7 +301,7 @@ const BackupRestore = () => {
             () => {
               appendLog(
                 t("br.success_restore_item", {
-                  item: t("manage.sidemenu.settings"),
+                  item: t("article.sidemenu.settings"),
                 }),
                 "success",
               )
@@ -309,7 +309,7 @@ const BackupRestore = () => {
             (msg) => {
               appendLog(
                 t("br.failed_restore_item", {
-                  item: t("manage.sidemenu.settings"),
+                  item: t("article.sidemenu.settings"),
                 }) +
                   ":" +
                   msg,
@@ -324,7 +324,7 @@ const BackupRestore = () => {
             addUser,
             updateUser,
             "username",
-            "manage.sidemenu.users",
+            "article.sidemenu.users",
           )
           await handleOvrData(
             data.storages,
@@ -332,7 +332,7 @@ const BackupRestore = () => {
             addStorage,
             updateStorage,
             "mount_path",
-            "manage.sidemenu.storages",
+            "article.sidemenu.storages",
           )
           await handleOvrData(
             data.metas,
@@ -340,7 +340,7 @@ const BackupRestore = () => {
             addMeta,
             updateMeta,
             "path",
-            "manage.sidemenu.metas",
+            "article.sidemenu.metas",
           )
         } else {
           for (const item of [
@@ -360,7 +360,7 @@ const BackupRestore = () => {
                 () => {
                   appendLog(
                     t("br.success_restore_item", {
-                      item: t(`manage.sidemenu.${item.name}`),
+                      item: t(`article.sidemenu.${item.name}`),
                     }) +
                       "-" +
                       `[${(itemData as any)[item.key]}]`,
@@ -370,7 +370,7 @@ const BackupRestore = () => {
                 (msg) => {
                   appendLog(
                     t("br.failed_restore_item", {
-                      item: t(`manage.sidemenu.${item.name}`),
+                      item: t(`article.sidemenu.${item.name}`),
                     }) +
                       ` [ ${(itemData as any)[item.key]} ] ` +
                       ":" +

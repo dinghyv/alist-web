@@ -25,7 +25,7 @@ import { Wether } from "~/components"
 
 const Metas = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.metas")
+  useManageTitle("article.sidemenu.metas")
   const { to } = useRouter()
   const [getMetasLoading, getMetas] = useFetch(() => r.get("/admin/meta/list"))
   const [metas, setMetas] = createSignal<Meta[]>([])

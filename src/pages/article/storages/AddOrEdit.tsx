@@ -177,7 +177,7 @@ const AddOrEdit = () => {
         loading={okLoading()}
         onClick={async () => {
           if (drivers()[storage.driver].config.need_ms) {
-            notify.info(t("manage.add_storage-tips"))
+            notify.info(t("article.add_storage-tips"))
             window.open(joinBase("/@manage/messenger"), "_blank")
           }
           const resp = await ok()

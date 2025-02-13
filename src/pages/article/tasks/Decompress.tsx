@@ -7,7 +7,7 @@ import {
 } from "~/pages/manage/tasks/helper"
 
 const Decompress = () => {
-  useManageTitle("manage.sidemenu.decompress")
+  useManageTitle("article.sidemenu.decompress")
   return (
     <VStack w="$full" alignItems="start" spacing="$4">
       <TypeTasks

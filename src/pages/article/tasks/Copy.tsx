@@ -4,7 +4,7 @@ import { getPath } from "./helper"
 
 const Copy = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.copy")
+  useManageTitle("article.sidemenu.copy")
   return (
     <TypeTasks
       type="copy"

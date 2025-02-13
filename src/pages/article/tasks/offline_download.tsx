@@ -7,7 +7,7 @@ import {
 } from "./helper"
 
 const OfflineDownload = () => {
-  useManageTitle("manage.sidemenu.offline_download")
+  useManageTitle("article.sidemenu.offline_download")
   return (
     <VStack w="$full" alignItems="start" spacing="$4">
       <TypeTasks

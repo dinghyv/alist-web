@@ -97,7 +97,7 @@ const Indexes = () => {
   const { isOpen, onOpen, onClose } = createDisclosure()
   return (
     <VStack spacing="$2" w="$full" alignItems="start">
-      <Heading>{t("manage.sidemenu.settings")}</Heading>
+      <Heading>{t("article.sidemenu.settings")}</Heading>
       <CommonSettings group={Group.INDEX} />
       <Heading>{t("indexes.current")}</Heading>
       <Show when={progress()}>

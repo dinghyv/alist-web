@@ -17,7 +17,7 @@ const bucket_parse = (settings: SettingItem[]) => {
 
 const S3Settings = () => {
   const t = useT()
-  useManageTitle(`manage.sidemenu.s3`)
+  useManageTitle(`article.sidemenu.s3`)
   const [settingsLoading, getSettings] = useFetch(
     (): PResp<SettingItem[]> => r.get(`/admin/setting/list?group=${Group.S3}`),
   )

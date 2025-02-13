@@ -16,7 +16,7 @@ import { Item } from "./SettingItem"
 
 const OtherSettings = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.other")
+  useManageTitle("article.sidemenu.other")
   const [uri, setUri] = createSignal("")
   const [secret, setSecret] = createSignal("")
   const [qbitUrl, setQbitUrl] = createSignal("")

@@ -40,7 +40,7 @@ const PermissionBadge = (props: { can: boolean; children: JSXElement }) => {
 
 const Profile = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.profile")
+  useManageTitle("article.sidemenu.profile")
   const { searchParams, to } = useRouter()
   const [username, setUsername] = createSignal(me().username)
   const [password, setPassword] = createSignal("")

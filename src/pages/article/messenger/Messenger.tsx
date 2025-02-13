@@ -24,7 +24,7 @@ export const Shower: Record<string, Component<Message>> = {
 
 export const Messenger = () => {
   const t = useT()
-  notify.info(t("manage.messenger-tips"))
+  notify.info(t("article.messenger-tips"))
   const [toSend, setToSend] = createSignal("")
   const [getLoading, getR] = useFetch(
     (): PResp<Message> => r.post("/admin/message/get"),
@@ -58,7 +58,7 @@ export const Messenger = () => {
         rounded="$lg"
         border="1px solid var(--hope-colors-neutral6)"
       >
-        <Heading size="xl">{t("manage.received_msgs")}</Heading>
+        <Heading size="xl">{t("article.received_msgs")}</Heading>
         <For each={received}>
           {(item) => <Dynamic component={Shower[item.type]} {...item} />}
         </For>
@@ -70,10 +70,10 @@ export const Messenger = () => {
       />
       <HStack spacing="$2">
         <Button colorScheme="accent" loading={getLoading()} onClick={get}>
-          {t("manage.receive")}
+          {t("article.receive")}
         </Button>
         <Button loading={sendLoading()} onClick={send}>
-          {t("manage.send")}
+          {t("article.send")}
         </Button>
       </HStack>
     </VStack>

@@ -30,7 +30,7 @@ import { createStorageSignal } from "@solid-primitives/storage"
 
 const Storages = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.storages")
+  useManageTitle("article.sidemenu.storages")
   const { to } = useRouter()
   const [getStoragesLoading, getStorages] = useFetch(
     (): Promise<PageResp<Storage>> => r.get("/admin/storage/list"),

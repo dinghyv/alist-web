@@ -4,7 +4,7 @@ import { getPath } from "./helper"
 
 const Upload = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.upload")
+  useManageTitle("article.sidemenu.upload")
   return (
     <TypeTasks
       type="upload"

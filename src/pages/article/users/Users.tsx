@@ -66,7 +66,7 @@ const Permissions = (props: { user: User }) => {
 
 const Users = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.users")
+  useManageTitle("article.sidemenu.users")
   const { to } = useRouter()
   const [getUsersLoading, getUsers] = useFetch(
     (): PPageResp<User> => r.get("/admin/user/list"),
