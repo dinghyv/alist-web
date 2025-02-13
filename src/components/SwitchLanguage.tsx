@@ -8,14 +8,19 @@ import {
   MenuTriggerProps,
   Spinner,
   useColorModeValue,
-  IconButton,
-  Tooltip,
 } from "@hope-ui/solid"
 import { useI18n } from "@solid-primitives/i18n"
 import { createSignal, For, Show } from "solid-js"
 import { langMap, languages, loadedLangs, setLang } from "~/app/i18n"
-import { IoLanguageOutline, IoBoat, IoMail } from "solid-icons/io"
+// import { TbLanguageHiragana } from "solid-icons/tb";
+import { IoLanguageOutline } from "solid-icons/io"
 import { Portal } from "solid-js/web"
+import { IoBoat } from 'solid-icons/io'
+import { IoMail } from 'solid-icons/io'
+import { IconButton } from "@hope-ui/solid"
+import { Tooltip } from "@hope-ui/solid"
+
+
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
 
@@ -79,14 +84,9 @@ export const SwitchLanguage = <C extends ElementType = "button">(
 export const SwitchLanguageWhite = () => {
   return (
     <Tooltip label="切换语言" placement="top">
-      <IconButton
-        as={SwitchLanguage}
-        icon={<IoLanguageOutline size="2.5em" />}
-        aria-label="切换语言"
-        variant="ghost"
-        boxSize="$8"
-        p="$0_5"
-      />
+      <IconButton boxSize="$8" p="$0_5">
+        <SwitchLanguage as={IoLanguageOutline} size="1.5em" />
+      </IconButton>
     </Tooltip>
   )
 }
@@ -94,14 +94,13 @@ export const SwitchLanguageWhite = () => {
 export const DinghyHomepage = () => {
   return (
     <Tooltip label="DINGHY的个人主页" placement="top">
-      <IconButton
-        icon={<IoBoat size="2.5em" />}
-        aria-label="DINGHY的个人主页"
-        variant="ghost"
-        boxSize="$8"
+      <IconButton 
+        onClick={() => window.location.href = "https://www.vyhd.xyz"} 
+        boxSize="$8" 
         p="$0_5"
-        onClick={() => window.location.href = "https://www.vyhd.xyz"}
-      />
+      >
+        <IoBoat size="1.5em" />
+      </IconButton>
     </Tooltip>
   )
 }
@@ -109,14 +108,13 @@ export const DinghyHomepage = () => {
 export const SendMeEmail = () => {
   return (
     <Tooltip label="给我邮件" placement="top">
-      <IconButton
-        icon={<IoMail size="2.5em" />}
-        aria-label="给我邮件"
-        variant="ghost"
-        boxSize="$8"
+      <IconButton 
+        onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
+        boxSize="$8" 
         p="$0_5"
-        onClick={() => window.location.href = "mailto:dinghyv@gmail.com"}
-      />
+      >
+        <IoMail size="1.5em" />
+      </IconButton>
     </Tooltip>
   )
 }
