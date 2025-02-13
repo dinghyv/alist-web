@@ -13,7 +13,7 @@ import {
   Icon,
 } from "@hope-ui/solid"
 import { createMemo, createSignal, Show } from "solid-js"
-import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail} from "~/components"
+import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, VisitAC} from "~/components"
 import { useFetch, useT, useTitle, useRouter } from "~/hooks"
 import {
   changeToken,
@@ -301,6 +301,7 @@ const Login = () => {
         >
           <SwitchLanguageWhite />
           <DinghyHomepage />
+          <VisitAC />
           <SendMeEmail />
           
           <SSOLogin />
