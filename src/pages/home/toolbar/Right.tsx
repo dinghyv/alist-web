@@ -13,7 +13,7 @@ import { usePath } from "~/hooks"
 import { Motion } from "@motionone/solid"
 import { isTocVisible, setTocDisabled } from "~/components"
 import { BiSolidBookContent } from "solid-icons/bi"
-
+import { IoMail } from 'solid-icons/io'
 
 export const Right = () => {
   const { isOpen, onToggle } = createDisclosure({
@@ -155,6 +155,13 @@ export const Right = () => {
                 }}
               />
             </Show>
+            <RightIcon
+                tips="email_me"
+                as={IoMail}
+                onClick={() => {
+                  window.open("mailto:dinghyv@gmail.com")
+                }}
+            />
           </VStack>
           <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
         </VStack>
