@@ -91,7 +91,6 @@ const App: Component = () => {
           <Routes base={base_path}>
             <Route path="/@test" component={Test} />
             <Route path="/@login" component={Login} />
-            <Route path="/@article" component={Article} />
             <Route
               path="/@manage/*"
               element={
