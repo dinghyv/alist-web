@@ -13,6 +13,7 @@ import {
   Icon,
 } from "@hope-ui/solid"
 import { createMemo, createSignal, Show } from "solid-js"
+import LoginBg from "./LoginBg"
 import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail} from "~/components"
 import { useFetch, useT, useTitle, useRouter } from "~/hooks"
 import {
@@ -174,7 +175,11 @@ const Login = () => {
   }
 
   return (
-    <Center zIndex="1" w="$full" h="100vh">
+    <Center zIndex="1" w="$full" h="100vh" style={{
+      backgroundImage: "url('https://images-cdn.vyhd.xyz/lsky-pro/2025/02/13/67ad924c66986.webp')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}>
       <VStack
         bgColor={bgColor()}
         rounded="$xl"
