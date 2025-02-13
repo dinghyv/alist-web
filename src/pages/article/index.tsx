@@ -10,7 +10,7 @@ import { routes } from "./routes"
 
 const Manage = () => {
   const t = useT()
-  useTitle(() => t("manage.title"))
+  useTitle(() => t("article.title"))
   return (
     <Box
       css={{

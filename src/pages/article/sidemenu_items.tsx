@@ -29,7 +29,6 @@ export type SideMenuItem = SideMenuItemProps & {
   children?: SideMenuItem[]
 }
 
-const CommonSettings = lazy(() => import("./settings/Common"))
 
 export const side_menu_items: SideMenuItem[] = [
   {
@@ -41,13 +40,13 @@ export const side_menu_items: SideMenuItem[] = [
         title: "article.sidemenu.test10",
         icon: BsWindow,
         to: "/@article/test1/test10",
-        component: () => <CommonSettings group={Group.SITE} />,
+        component: lazy(() => import("./test1/test10")),
       },
       {
         title: "article.sidemenu.style",
         icon: BsPaletteFill,
         to: "/@article/test1/test11",
-        component: () => <CommonSettings group={Group.STYLE} />,
+        component: lazy(() => import("./test1/test11")),
       },
     ],
   },

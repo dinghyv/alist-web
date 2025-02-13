@@ -9,7 +9,7 @@ const fetchReadme = async () =>
 
 const About = () => {
   const t = useT()
-  useManageTitle("manage.sidemenu.test10")
+  useManageTitle("article.sidemenu.test10")
   const [readme] = createResource(fetchReadme)
   return (
     <MaybeLoading loading={readme.loading}>
