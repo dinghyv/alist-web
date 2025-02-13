@@ -84,7 +84,7 @@ export const SwitchLanguage = <C extends ElementType = "button">(
 export const SwitchLanguageWhite = () => {
   return (
     <Tooltip label="切换语言" placement="top">
-      <Button boxSize="$12" p="$">
+      <Button boxSize="$12" p="$3">
         <SwitchLanguage as={IoLanguageOutline} />
       </Button>
     </Tooltip>
