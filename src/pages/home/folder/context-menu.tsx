@@ -88,18 +88,16 @@ export const ContextMenu = () => {
         </Item>
       </Show>
       <Show when={oneChecked()}>
-        
-      <Item
-    onClick={() => {
-      refresh(undefined, true)
-    }}
-  >
-    <HStack spacing="$2">
-      <Icon as={RiSystemRefreshLine} boxSize="$7" color="$info9" />
-      <Text>{t("home.toolbar.refresh")}</Text>
-    </HStack>
-  </Item>
-
+        <Item
+          onClick={() => {
+            refresh(undefined, true)
+          }}
+        >
+          <HStack spacing="$2">
+            <Icon as={RiSystemRefreshLine} boxSize="$7" color="$info9" />
+            <Text>{t("home.toolbar.refresh")}</Text>
+          </HStack>
+        </Item>
         <Item
           onClick={({ props }) => {
             if (props.is_dir) {
