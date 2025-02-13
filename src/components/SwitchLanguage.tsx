@@ -85,7 +85,7 @@ export const SwitchLanguageWhite = () => {
   return (
     <Tooltip label="切换语言" placement="top">
       <IconButton boxSize="$8" p="$0_5">
-        <SwitchLanguage as={IoLanguageOutline} size="1.5em" />
+        <SwitchLanguage as={IoLanguageOutline} size="1.5em" variant="ghost" />
       </IconButton>
     </Tooltip>
   )
@@ -98,6 +98,7 @@ export const DinghyHomepage = () => {
         onClick={() => window.location.href = "https://www.vyhd.xyz"} 
         boxSize="$8" 
         p="$0_5"
+        variant="ghost"
       >
         <IoBoat size="1.5em" />
       </IconButton>
@@ -112,6 +113,7 @@ export const SendMeEmail = () => {
         onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
         boxSize="$8" 
         p="$0_5"
+        variant="ghost"
       >
         <IoMail size="1.5em" />
       </IconButton>
