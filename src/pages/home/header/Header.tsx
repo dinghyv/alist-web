@@ -17,6 +17,9 @@ import { bus } from "~/utils"
 import { Layout } from "./layout"
 import { isMac } from "~/utils/compatibility"
 import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail, UserLogin, UserAdmin} from "~/components"
+import { getSettingBool } from "~/store"
+
+
 
 export const Header = () => {
   const logos = getSetting("logo").split("\n")
