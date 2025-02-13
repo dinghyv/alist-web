@@ -184,7 +184,7 @@ const Login = () => {
           "@sm": "364px",
         }}
         spacing="$4"
-        opacity="0.3"
+        opacity="0.8"
       >
         <Flex alignItems="center" justifyContent="space-around">
           <Image mr="$2" width="$33" height="$12" src={logo()} />
