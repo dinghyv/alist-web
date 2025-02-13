@@ -16,6 +16,8 @@ import { Container } from "../Container"
 import { bus } from "~/utils"
 import { Layout } from "./layout"
 import { isMac } from "~/utils/compatibility"
+import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail} from "~/components"
+
 
 export const Header = () => {
   const logos = getSetting("logo").split("\n")
@@ -80,6 +82,9 @@ export const Header = () => {
                   </HStack>
                 </HStack>
               </Show>
+              <SwitchLanguageWhite />
+              <DinghyHomepage />
+              <SendMeEmail />
               <Layout />
             </Show>
           </HStack>
