@@ -54,6 +54,10 @@ export const ContextMenu = () => {
     >
       <Show when={oneChecked()}>
         <Item
+          hidden={() => {
+            const index = UserPermissions.findIndex((item) => item === "refresh")
+            return !UserMethods.can(me(), index)
+          }}
           onClick={() => {
             refresh(undefined, true)
           }}
@@ -108,6 +112,10 @@ export const ContextMenu = () => {
           <ItemContent name="copy_link" />
         </Item>
         <Item
+          hidden={() => {
+            const index = UserPermissions.findIndex((item) => item === "download")
+            return !UserMethods.can(me(), index)
+          }}
           onClick={({ props }) => {
             if (props.is_dir) {
               if (!canPackageDownload()) {
