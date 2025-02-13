@@ -82,9 +82,9 @@ export const Header = () => {
                   </HStack>
                 </HStack>
               </Show>
-              <SwitchLanguageWhite />
               <DinghyHomepage />
               <SendMeEmail />
+              <SwitchLanguageWhite />
               <Layout />
             </Show>
           </HStack>
