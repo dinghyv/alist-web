@@ -19,7 +19,6 @@ import { isArchive } from "~/store/archive"
 import { usePath } from "~/hooks"
 import { RiSystemRefreshLine } from "solid-icons/ri"
 
-
 const { refresh } = usePath()
 const ItemContent = (props: { name: string }) => {
   const t = useT()
@@ -88,7 +87,7 @@ export const ContextMenu = () => {
         </Item>
       </Show>
       <Show when={oneChecked()}>
-        <Item
+        {/* <Item
           onClick={() => {
             refresh(undefined, true)
           }}
@@ -97,7 +96,7 @@ export const ContextMenu = () => {
             <Icon as={RiSystemRefreshLine} boxSize="$7" color="$info9" />
             <Text>{t("home.toolbar.refresh")}</Text>
           </HStack>
-        </Item>
+        </Item> */}
         <Item
           onClick={({ props }) => {
             if (props.is_dir) {
