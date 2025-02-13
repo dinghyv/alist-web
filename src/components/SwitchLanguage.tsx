@@ -15,10 +15,11 @@ import { langMap, languages, loadedLangs, setLang } from "~/app/i18n"
 // import { TbLanguageHiragana } from "solid-icons/tb";
 import { IoLanguageOutline } from "solid-icons/io"
 import { Portal } from "solid-js/web"
-import { useRouter } from "~/hooks"
-import { FaSolidSailboat } from 'solid-icons/fa'
-import { FiMail } from 'solid-icons/fi'
+import { IoBoat } from 'solid-icons/io'
+import { IoMail } from 'solid-icons/io'
 import { Button } from "@hope-ui/solid"
+import { Tooltip } from "@hope-ui/solid"
+
 
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
@@ -80,30 +81,40 @@ export const SwitchLanguage = <C extends ElementType = "button">(
   )
 }
 
-export const SwitchLanguageWhite = () => (
-  <SwitchLanguage as={IoLanguageOutline} boxSize="$8" />
-)
+export const SwitchLanguageWhite = () => {
+  return (
+    <Tooltip label="切换语言" placement="top">
+      <Button boxSize="$8" p="$2">
+        <SwitchLanguage as={IoLanguageOutline} />
+      </Button>
+    </Tooltip>
+  )
+}
 
 export const DinghyHomepage = () => {
   return (
-    <Button 
-      onClick={() => window.location.href = "https://www.vyhd.xyz"} 
-      boxSize="$8" 
-      p="$2"
-    >
-      <FaSolidSailboat size="1.5em" />
-    </Button>
+    <Tooltip label="DINGHY的个人主页" placement="top">
+      <Button 
+        onClick={() => window.location.href = "https://www.vyhd.xyz"} 
+        boxSize="$8" 
+        p="$2"
+      >
+        <IoBoat size="1.5em" />
+      </Button>
+    </Tooltip>
   )
 }
 
 export const SendMeEmail = () => {
   return (
-    <Button 
-      onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
-      boxSize="$8" 
-      p="$2"
-    >
-      <FiMail size="1.5em" />
-    </Button>
+    <Tooltip label="给我邮件" placement="top">
+      <Button 
+        onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
+        boxSize="$8" 
+        p="$2"
+      >
+        <IoMail size="1.5em" />
+      </Button>
+    </Tooltip>
   )
 }
