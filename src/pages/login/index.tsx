@@ -13,7 +13,7 @@ import {
   Icon,
 } from "@hope-ui/solid"
 import { createMemo, createSignal, Show } from "solid-js"
-import { SwitchColorMode, SwitchLanguageWhite } from "~/components"
+import { DinghyHomepage, SwitchLanguageWhite, SendMeEmail} from "~/components"
 import { useFetch, useT, useTitle, useRouter } from "~/hooks"
 import {
   changeToken,
