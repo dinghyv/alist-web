@@ -7,13 +7,12 @@ import { objStore, selectAll, State, toggleCheckbox, userCan } from "~/store"
 import { bus } from "~/utils"
 import { operations } from "./operations"
 import { IoMagnetOutline } from "solid-icons/io"
-import { AiOutlineCloudUpload, AiOutlineSetting, AiOutlineUser } from "solid-icons/ai"
+import { AiOutlineCloudUpload } from "solid-icons/ai"
 import { RiSystemRefreshLine } from "solid-icons/ri"
 import { usePath } from "~/hooks"
 import { Motion } from "@motionone/solid"
 import { isTocVisible, setTocDisabled } from "~/components"
 import { BiSolidBookContent } from "solid-icons/bi"
-import { IoMail } from 'solid-icons/io'
 
 export const Right = () => {
   const { isOpen, onToggle } = createDisclosure({

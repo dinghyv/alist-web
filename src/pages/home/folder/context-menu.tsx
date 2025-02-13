@@ -4,6 +4,7 @@ import "solid-contextmenu/dist/style.css"
 import { HStack, Icon, Text, useColorMode, Image } from "@hope-ui/solid"
 import { operations } from "../toolbar/operations"
 import { For, Show } from "solid-js"
+import { usePath } from "~/hooks"
 import { bus, convertURL, notify } from "~/utils"
 import { ObjType, UserMethods, UserPermissions } from "~/types"
 import {
@@ -32,7 +33,9 @@ const ItemContent = (props: { name: string }) => {
   )
 }
 
+
 export const ContextMenu = () => {
+  const { refresh } = usePath()
   const t = useT()
   const { colorMode } = useColorMode()
   const { copySelectedRawLink, copySelectedPreviewPage } = useCopyLink()
@@ -49,6 +52,15 @@ export const ContextMenu = () => {
       theme={colorMode() !== "dark" ? "light" : "dark"}
       style="z-index: var(--hope-zIndices-popover)"
     >
+      <Show when={oneChecked()}>
+        <Item
+          onClick={() => {
+            refresh(undefined, true)
+          }}
+        >
+          <ItemContent name="refresh" />
+        </Item>
+      </Show>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
           <Item
