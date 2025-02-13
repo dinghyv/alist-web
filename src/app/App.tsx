@@ -25,6 +25,7 @@ import { setArchiveExtensions } from "~/store/archive"
 const Home = lazy(() => import("~/pages/home/Layout"))
 const Manage = lazy(() => import("~/pages/manage"))
 const Login = lazy(() => import("~/pages/login"))
+const Article = lazy(() => import("~/pages/article"))
 const Test = lazy(() => import("~/pages/test"))
 
 const App: Component = () => {
@@ -90,6 +91,7 @@ const App: Component = () => {
           <Routes base={base_path}>
             <Route path="/@test" component={Test} />
             <Route path="/@login" component={Login} />
+            <Route path="/@article" component={Article} />
             <Route
               path="/@manage/*"
               element={

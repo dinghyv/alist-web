@@ -184,8 +184,8 @@ const Login = () => {
           "@sm": "364px",
         }}
         spacing="$4"
-        opacity="0.8"
-        style={{ backdropFilter: "blur(10px)" }} // 添加高斯模糊效果
+        opacity="0.9"
+        style={{ backdropFilter: "blur(15px)" }} // 添加高斯模糊效果
       >
         <Flex alignItems="center" justifyContent="space-around">
           <Image mr="$2" width="$33" height="$12" src={logo()} />
