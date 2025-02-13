@@ -85,15 +85,25 @@ export const SwitchLanguageWhite = () => (
 )
 
 export const DinghyHomepage = () => {
-  const { to } = useRouter()
   return (
-    <Button onClick={() => to("https://www.vyhd.xyz")} as={FaSolidSailboat} boxSize="$8" />
+    <Button 
+      onClick={() => window.location.href = "https://www.vyhd.xyz"} 
+      boxSize="$8" 
+      p="$2"
+    >
+      <FaSolidSailboat size="1.5em" />
+    </Button>
   )
 }
 
 export const SendMeEmail = () => {
-  const { to } = useRouter()
   return (
-    <Button onClick={() => to("mailto:dinghyv@gmail.com")} as={FiMail} boxSize="$8" />
+    <Button 
+      onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
+      boxSize="$8" 
+      p="$2"
+    >
+      <FiMail size="1.5em" />
+    </Button>
   )
 }
