@@ -95,7 +95,7 @@ export const DinghyHomepage = () => {
   return (
     <Tooltip label="DINGHY的个人主页" placement="top">
       <IconButton 
-        onClick={() => window.location.href = "https://www.vyhd.xyz"} 
+        onClick={() => window.open("https://www.vyhd.xyz", "_blank")} 
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
@@ -125,7 +125,7 @@ export const UserLogin = () => {
   return (
     <Tooltip label="账号登录" placement="top">
       <IconButton 
-        onClick={() => window.location.href = "https://cloud.vyhd.xyz/@login"} 
+        onClick={() => window.open("https://cloud.vyhd.xyz/@login", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
@@ -140,7 +140,7 @@ export const UserAdmin = () => {
   return (
     <Tooltip label="管理后台" placement="top">
       <IconButton 
-        onClick={() => window.location.href = "https://cloud.vyhd.xyz/@manage"} 
+        onClick={() => window.open("https://cloud.vyhd.xyz/@manage", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
