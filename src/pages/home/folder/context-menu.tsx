@@ -16,11 +16,7 @@ import {
 import { players } from "../previews/video_box"
 import { BsPlayCircleFill } from "solid-icons/bs"
 import { isArchive } from "~/store/archive"
-import { usePath } from "~/hooks"
-import { RiSystemRefreshLine } from "solid-icons/ri"
 
-
-const { refresh } = usePath()
 const ItemContent = (props: { name: string }) => {
   const t = useT()
   return (
@@ -88,18 +84,6 @@ export const ContextMenu = () => {
         </Item>
       </Show>
       <Show when={oneChecked()}>
-        
-      <Item
-    onClick={() => {
-      refresh(undefined, true)
-    }}
-  >
-    <HStack spacing="$2">
-      <Icon as={RiSystemRefreshLine} boxSize="$7" color="$info9" />
-      <Text>{t("home.toolbar.refresh")}</Text>
-    </HStack>
-  </Item>
-
         <Item
           onClick={({ props }) => {
             if (props.is_dir) {
