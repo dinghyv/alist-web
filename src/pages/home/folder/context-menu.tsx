@@ -34,6 +34,7 @@ const ItemContent = (props: { name: string }) => {
   )
 }
 
+
 export const ContextMenu = () => {
   const { refresh } = usePath()
   const t = useT()
@@ -66,57 +67,59 @@ export const ContextMenu = () => {
     })
   })
 
+
   return (
     <Menu
       id="context-menu"
       animation="scale"
       theme={colorMode() !== "dark" ? "light" : "dark"}
-      style="z-index: var(--hope-zIndices-popover); display: none; position: absolute;"
+      style="z-index: var(--hope-zIndices-popover)"
     >
-      <Item
-        hidden={() => {
-          const index = UserPermissions.findIndex((item) => item === "rename")
-          return !UserMethods.can(me(), index)
-        }}
-        onClick={() => {
-          refresh(undefined, true)
-        }}
-      >
-        <ItemContent name="refresh" />
-      </Item>
 
-      <Submenu
+        <Item
+          hidden={() => {
+            const index = UserPermissions.findIndex((item) => item === "rename")
+            return !UserMethods.can(me(), index)
+          }}
+          onClick={() => {
+            refresh(undefined, true)
+          }}
+        >
+          <ItemContent name="refresh" />
+        </Item>
+
+        <Submenu
         hidden={() => {
-          const index = UserPermissions.findIndex((item) => item === "rename")
-          return !UserMethods.can(me(), index)
-        }}
+            const index = UserPermissions.findIndex((item) => item === "rename")
+            return !UserMethods.can(me(), index)
+          }}
         label={
-          <HStack spacing="$2">
-            <Icon
-              as={RiSystemAddBoxLine}
-              boxSize="$7"
-              p="$0_5"
-              color="$info9"
-            />
-            <Text>{t("home.toolbar.new")}</Text>
-          </HStack>
-        }
-      >
-        <Item
-          onClick={() => {
-            bus.emit("tool", "new_file")
-          }}
+            <HStack spacing="$2">
+              <Icon
+                as={RiSystemAddBoxLine}
+                boxSize="$7"
+                p="$0_5"
+                color="$info9"
+              />
+              <Text>{t("home.toolbar.new")}</Text>
+            </HStack>
+          }
         >
-          <ItemContent name="new_file" />
+        <Item
+        onClick={() => {
+              bus.emit("tool", "new_file")
+            }}
+        >
+        <ItemContent name="new_file" />
         </Item>
         <Item
-          onClick={() => {
-            bus.emit("tool", "mkdir")
-          }}
+        onClick={() => {
+              bus.emit("tool", "mkdir")
+            }}
         >
-          <ItemContent name="mkdir" />
+        <ItemContent name="mkdir" />
         </Item>
-      </Submenu>
+        </Submenu>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
           <Item
@@ -164,15 +167,15 @@ export const ContextMenu = () => {
           <ItemContent name="copy_link" />
         </Item>
         <Item
-          hidden={() => {
-            const index = UserPermissions.findIndex((item) => item === "rename")
-            return !UserMethods.can(me(), index)
-          }}
-          onClick={() => {
-            bus.emit("tool", "upload")
-          }}
+        hidden={() => {
+          const index = UserPermissions.findIndex((item) => item === "rename")
+          return !UserMethods.can(me(), index)
+        }}
+        onClick={() => {
+              bus.emit("tool", "upload")
+            }}
         >
-          <ItemContent name="upload" />
+        <ItemContent name="upload" />
         </Item>
         <Item
           hidden={() => {
