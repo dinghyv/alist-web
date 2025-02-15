@@ -3,7 +3,7 @@ import { useCopyLink, useDownload, useLink, useT } from "~/hooks"
 import "solid-contextmenu/dist/style.css"
 import { HStack, Icon, Text, useColorMode, Image } from "@hope-ui/solid"
 import { operations } from "../toolbar/operations"
-import { For, Show } from "solid-js"
+import { For, Show, onMount } from "solid-js"
 import { usePath } from "~/hooks"
 import { bus, convertURL, notify } from "~/utils"
 import { ObjType, UserMethods, UserPermissions } from "~/types"
@@ -46,9 +46,31 @@ export const ContextMenu = () => {
     return UserMethods.is_admin(me()) || getSettingBool("package_download")
   }
   const { rawLink } = useLink()
+
+  onMount(() => {
+    document.addEventListener("contextmenu", (event) => {
+      event.preventDefault()
+      // 显示上下文菜单的逻辑
+      const menu = document.getElementById("context-menu")
+      if (menu) {
+        menu.style.display = "block"
+        menu.style.left = `${event.pageX}px`
+        menu.style.top = `${event.pageY}px`
+      }
+    })
+
+    document.addEventListener("click", () => {
+      const menu = document.getElementById("context-menu")
+      if (menu) {
+        menu.style.display = "none"
+      }
+    })
+  })
+
+
   return (
     <Menu
-      id={1}
+      id="context-menu"
       animation="scale"
       theme={colorMode() !== "dark" ? "light" : "dark"}
       style="z-index: var(--hope-zIndices-popover)"
