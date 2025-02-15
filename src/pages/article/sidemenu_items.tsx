@@ -23,6 +23,8 @@ import { Component, lazy } from "solid-js"
 import { Group, UserRole } from "~/types"
 import { FaSolidBook, FaSolidDatabase } from "solid-icons/fa"
 import { TbArchive } from "solid-icons/tb"
+import { FaSolidRocket } from 'solid-icons/fa'
+import { HiOutlineArrowUpCircle } from 'solid-icons/hi'
 
 export type SideMenuItem = SideMenuItemProps & {
   component?: Component
@@ -32,31 +34,31 @@ export type SideMenuItem = SideMenuItemProps & {
 
 export const side_menu_items: SideMenuItem[] = [
   {
-    title: "article.sidemenu.test1",
-    icon: BsGearFill,
-    to: "/@article/test1",
+    title: "article.sidemenu.gtaol-updates",
+    icon: FaSolidRocket,
+    to: "/articles/gtaol-updates",
     role: UserRole.GUEST,
     children: [
       {
-        title: "article.sidemenu.test10",
-        icon: BsWindow,
-        to: "/@article/test1/test10",
+        title: "article.sidemenu.update213",
+        icon: HiOutlineArrowUpCircle,
+        to: "/articles/gtaol-updates/update213",
         role: UserRole.GUEST,
-        component: lazy(() => import("./test1/test10")),
+        component: lazy(() => import("./gtaol-updates/update213")),
       },
       {
-        title: "article.sidemenu.style",
-        icon: BsPaletteFill,
-        to: "/@article/test1/test11",
+        title: "article.sidemenu.update206",
+        icon: HiOutlineArrowUpCircle,
+        to: "/articles/gtaol-updates/update206",
         role: UserRole.GUEST,
-        component: lazy(() => import("./test1/test11")),
+        component: lazy(() => import("./gtaol-updates/update206")),
       },
     ],
   },
   {
-    title: "article.sidemenu.about",
+    title: "article.sidemenu.index",
     icon: BsFront,
-    to: "/@article/about",
+    to: "/articles/index",
     role: UserRole.GUEST,
     component: lazy(() => import("./About")),
   },

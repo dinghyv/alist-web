@@ -100,7 +100,7 @@ const App: Component = () => {
               }
             />
             <Route
-              path="/@article/*"
+              path="/articles/*"
               element={
                 <MustUser>
                   <Article />
