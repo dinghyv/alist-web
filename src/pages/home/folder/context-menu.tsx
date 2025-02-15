@@ -83,16 +83,19 @@ export const ContextMenu = () => {
             </HStack>
           }
         >
-        <Item>
+        <Item
         onClick={() => {
               bus.emit("tool", "new_file")
             }}
-        <ItemContent name="refresh" />
+        >
+        <ItemContent name="new_file" />
         </Item>
-        <Item>
+        <Item
         onClick={() => {
               bus.emit("tool", "mkdir")
             }}
+        >
+        <ItemContent name="mkdir" />
         </Item>
         </Submenu>
       </Show>
@@ -141,6 +144,13 @@ export const ContextMenu = () => {
           }}
         >
           <ItemContent name="copy_link" />
+        </Item>
+        <Item
+        onClick={() => {
+              bus.emit("tool", "upload")
+            }}
+        >
+        <ItemContent name="upload" />
         </Item>
         <Item
           hidden={() => {

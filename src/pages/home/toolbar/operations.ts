@@ -10,6 +10,7 @@ import { ImMoveUp } from "solid-icons/im"
 import { BiRegularRename } from "solid-icons/bi"
 import { HiOutlineFolderRemove } from "solid-icons/hi"
 import { RiSystemRefreshLine } from "solid-icons/ri"
+import { AiOutlineCloudUpload } from 'solid-icons/ai'
 
 
 export interface Operations {
@@ -34,6 +35,7 @@ export const operations: Operations = {
   cancel_select: { icon: TiDeleteOutline },
   download: { icon: AiOutlineCloudDownload, color: "$primary9" },
   refresh: { icon: RiSystemRefreshLine, color: "$primary9" },
+  upload: { icon: AiOutlineCloudUpload, color: "$primary9" },
 }
 // interface Operation {
 //   label: string;
