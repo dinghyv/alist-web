@@ -12,6 +12,13 @@ export type SideMenuItem = SideMenuItemProps & {
 
 export const side_menu_items: SideMenuItem[] = [
   {
+    title: "article.sidemenu.index",
+    icon: BsFront,
+    to: "/articles/index",
+    role: UserRole.GUEST,
+    component: lazy(() => import("./About")),
+  },
+  {
     title: "article.sidemenu.gtaol-updates",
     icon: FaSolidRocket,
     to: "/articles/gtaol-updates",
@@ -33,12 +40,4 @@ export const side_menu_items: SideMenuItem[] = [
       },
     ],
   },
-  {
-    title: "article.sidemenu.index",
-    icon: BsFront,
-    to: "/articles/index",
-    role: UserRole.GUEST,
-    component: lazy(() => import("./About")),
-  },
-
 ]
