@@ -1,46 +1,404 @@
-<!DOCTYPE html>
-<html lang="en" translate="no">
+<!doctype html>
+<html lang="zh-CN" translate="no">
   <head>
     <!-- customize head -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="referrer" content="same-origin" />
-    <meta name="generator" content="AList V3" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="google" content="notranslate" />
-    <link href="/static/manifest.json" rel="manifest" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="AList" />
-    <link
-      rel="apple-touch-icon"
-      href="https://jsd.nn.ci/gh/alist-org/logo@main/logo.png"
-    />
-    <script
-      src="https://g.alicdn.com/IMM/office-js/1.1.5/aliyun-web-office-sdk.min.js"
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta name="referrer" content="same-origin" >
+    <meta name="generator" content="AList V3" >
+    <meta name="theme-color" content="#000000" >
+    <meta name="google" content="notranslate" >
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" >
+    <meta name="apple-mobile-web-app-title" content="AList" >
+    <link       rel="apple-touch-icon"
+      href="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a459f16fdba.webp"
+    >
+    <script       src="https://g.alicdn.com/IMM/office-js/1.1.5/aliyun-web-office-sdk.min.js"
       async
     ></script>
-    <link
-      rel="shortcut icon"
+    <link       rel="shortcut icon"
       type="image/ico"
-      href="https://jsd.nn.ci/gh/alist-org/logo@main/logo.svg"
-    />
-    <title>Loading...</title>
+      href="https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a459f16fdba.webp"
+    >
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<!---去掉底部管理--->
+<style>
+.footer span,.footer a:nth-of-type(2){
+  display:none;
+}
+</style>
+<!--去掉底部Powered by Alist--->
+<style>
+.footer span,.footer a:nth-of-type(1){
+  display:none;
+}
+</style>
+<style>
+
+/*白天背景图*/
+ .hope-ui-light {
+    background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.3)), url('https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a46075c37c9.webp');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position-x:center;
+    opacity: 0.9;
+}
+/*夜间背景图*/
+ .hope-ui-dark {
+    background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.3)), url('https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a46075c37c9.webp');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position-x:center;
+    opacity: 0.9;
+}
+
+/* SweetAlert2 样式 */
+        .swal2-popup {
+            background: rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+        }
+        .swal2-title {
+            color: #000 !important;
+        }
+        .swal2-input {
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #000;
+            border-radius: 5px;
+        }
+
+  /*主列表白天模式透明*/
+  .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+  }
+  /*主列表夜间模式透明*/
+  .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-iigjoxS-css {
+    background-color: rgb(0 0 0 / 75%) !important;
+  }
+  /*readme白天模式透明*/
+  .hope-c-PJLV.hope-c-PJLV-ikSuVsl-css {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+  }
+  /*readme夜间模式透明*/
+  .hope-c-PJLV.hope-c-PJLV-iiuDLME-css {
+    background-color: rgb(0 0 0 / 75%) !important;
+  }
+
+
+  /*顶部右上角切换按钮透明*/
+  .hope-ui-light .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+  }
+  .hope-ui-dark .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+    background-color: rgb(0 0 0 / 50%) !important;
+  }
+
+
+  /*右下角侧边栏按钮透明 第一个是白天 第二个是夜间*/
+  .hope-ui-light .hope-c-PJLV-ijgzmFG-css {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+  }
+  .hope-ui-dark .hope-c-PJLV-ijgzmFG-css {
+    background-color: rgb(0 0 0 / 50%) !important;
+  }
+  /*白天模式代码块透明*/
+  .hope-ui-light pre {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  /*夜间模式代码块透明*/
+  .hope-ui-dark pre {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+
+
+  /*左侧侧边栏目录*/
+  /*白天模式*/
+  .hope-ui-light .hope-c-PJLV-ieGWMbI-css {
+    background: rgba(255, 255, 255, 0.5) !important;
+  }
+  /*夜间模式*/
+  .hope-ui-dark .hope-c-PJLV-ieGWMbI-css {
+    background-color: rgb(0 0 0 / 50%) !important;
+  }
+  /* 返回顶部 */
+  .hope-c-PJLV-ihVEsOa-css {
+    background: rgba(255, 255, 255, 0.5) !important;
+  }
+  .hope-ui-dark .hope-c-PJLV-ihVEsOa-css {
+    background-color: rgb(0 0 0 / 50%) !important;
+  }
+
+
+  /*顶部*/
+  #root > .header {
+    background: rgba(255, 255, 255, 0);
+  }
+  /*导航条*/
+  /*白天模式*/
+  .hope-ui-light .body > .nav {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: var(--hope-radii-xl);
+  }
+  /*夜间模式*/
+  .hope-ui-dark .body > .nav {
+    background-color: rgb(0 0 0 / 50%);
+    border-radius: var(--hope-radii-xl);
+  }
+  /*隐藏导航条遮罩*/
+  .body > .nav::after {
+    display: none;
+  }
+
+
+  /*底部CSS，.App .table这三个一起的*/
+  dibu {
+    border-top: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+  .App {
+    min-height: 85vh;
+  }
+  .table {
+    margin: auto;
+  }
+
+
+/*白天模式 搜索主体+毛玻璃*/
+.hope-ui-light .hope-c-PJLV-iiBaxsN-css{
+   background-color: rgba(255,255,255,0.2)!important;
+   backdrop-filter: blur(10px)!important;
+}
+
+/*白天模式 搜索栏输入框+毛玻璃*/
+.hope-ui-light .hope-c-kvTTWD-hYRNAb-variant-filled{
+   background-color: rgba(255,255,255,0.2)!important;
+   backdrop-filter: blur(10px)!important;
+}
+
+/*白天模式 搜索按钮+毛玻璃*/
+.hope-ui-light .hope-c-PJLV-ikEIIxw-css{
+   background-color: rgba(255,255,255,0.2)!important;
+   backdrop-filter: blur(10px)!important;
+   padding: var(--hope-space-1)!important;
+}
+
+/*夜间模式搜索主体+毛玻璃*/
+.hope-ui-dark .hope-c-PJLV-iiBaxsN-css{
+    background-color: rgb(0 0 0 / 10%)!important;
+    backdrop-filter: blur(10px)!important;
+}
+
+/*夜间模式搜索栏+毛玻璃*/
+.hope-ui-dark .hope-c-kvTTWD-hYRNAb-variant-filled{
+    background-color: rgb(0 0 0 / 10%)!important;
+    backdrop-filter: blur(10px)!important;
+}
+
+/*夜间模式 搜索按钮+毛玻璃*/
+.hope-ui-dark .hope-c-PJLV-ikEIIxw-css{
+    background-color: rgb(0 0 0 / 10%)!important;
+    backdrop-filter: blur(10px)!important;
+    padding: var(--hope-space-1)!important;
+}
+<!---去掉底部管理--->
+.footer span,.footer a:nth-of-type(2){
+  display:none;
+}
+<!--去掉底部Powered by Alist--->
+.footer span,.footer a:nth-of-type(1){
+  display:none;
+}
+</style>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Sakana.setMute(false);
+            Sakana.init({
+                el: '.sakana-box',
+                inertia: 0.01,
+                decay: 0.99,
+                scale: 0.5,
+                canSwitchCharacter: true,
+            });
+
+        });
+function simpleEncrypt(text) {
+  return btoa(text.split('').reverse().join(''));
+}
+const correctPassword = "NTQwMg==";
+if (localStorage.getItem('pan_password') !== correctPassword) {
+  checkPassword("success", "输入密码进入");
+}
+
+function checkPassword(icon, title) {
+  // 使用 SweetAlert2 显示密码弹窗
+  Swal.fire({
+     title: "V云盘SP",
+    html: `
+
+      <p id="ip-info" style="background-color: #2c3e50; color: white; padding: 10px; border-radius: 8px;">
+        请输入校验码访问
+      </p>
+     <p id="info" style="color: red; padding: 10px; border-radius: 8px;">
+        校验码为：2045
+      </p>
+      <p id="hint" style="color: white; padding: 10px; border-radius: 8px;">
+        输入校验码以访问本站
+      </p>
+    `,
+    icon: icon,
+    imageUrl: 'https://images-cdn.vyhd.xyz/lsky-pro/2025/02/06/67a459f16fdba.webp',
+    imageWidth: 250,
+    imageHeight: 250,
+    input: 'password',
+    inputAttributes: {
+      placeholder: "请输入密码"
+    },
+    showCancelButton: false,
+    confirmButtonText: "确认",
+    customClass: {
+      popup: 'swal2-popup',
+      title: 'swal2-title',
+      input: 'swal2-input'
+    },
+    didOpen: () => {
+      // 在弹窗打开时获取 IP 地址
+      fetchIP();
+    }
+  }).then((result) => {
+    if (!result.value) {
+      checkPassword("warning", "请输入密码");
+      return;
+    }
+    const encryptedInput = simpleEncrypt(result.value);
+    if (encryptedInput === correctPassword) {
+      Swal.fire("欢迎！", "", "success").then(() => {
+        localStorage.setItem("pan_password", encryptedInput);
+      });
+    } else {
+      checkPassword("error", "密码错误");
+    }
+  });
+}
+
+function fetchIP() {
+  // 使用 JSONP 获取 IP 地址
+  const script = document.createElement('script');
+  script.src = 'https://api.ipify.org?format=jsonp&callback=updateIP';
+  document.body.appendChild(script);
+}
+
+function updateIP(json) {
+  // 更新弹窗中的 IP 地址
+  const ipInfo = document.getElementById('ip-info');
+  if (ipInfo) {
+    ipInfo.textContent = "你的IP是：" + json.ip;
+  }
+}
+
+// 在页面加载时调用
+document.addEventListener("DOMContentLoaded", () => {
+    fetchIP();
+});
+       
+</script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" data-src="/assets/polyfills-legacy.db4d313c.js">!(function() {
+      var e = document.createElement('script')
+      e.src =  window.__dynamic_base__ + document.getElementById('vite-legacy-polyfill').getAttribute('data-src');
+      e.onload = function() {
+        System.import( window.__dynamic_base__+document.getElementById('vite-legacy-entry').getAttribute('data-src'))
+      };
+      document.body.appendChild(e)
+    })();</script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy.bcff35c7.js"></script>
+</body>
+
+
+
+
+    <title>加载中...</title>
     <script>
       window.ALIST = {
         cdn: undefined,
         monaco_cdn: undefined,
         base_path: undefined,
-        api: undefined,
+        api: "https://sp.vyhd.xyz",
         main_color: undefined,
       }
       window.__dynamic_base__ = window.ALIST.cdn || ""
     </script>
-  </head>
+    
+    
+    <script type="module">try{import.meta.url;import("_").catch(()=>1);}catch(e){}window.__vite_is_modern_browser=true;</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy build because dynamic import or import.meta.url is unsupported, syntax error above should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src= window.__dynamic_base__+e.getAttribute('data-src'),n.onload=function(){System.import( window.__dynamic_base__+document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+    <script>
+(function(){
+var preloads = [{"parentTagName":"head","tagName":"link","attrs":{"href":"/static/manifest.json","rel":"manifest"}},{"parentTagName":"head","tagName":"script","attrs":{"type":"module","crossorigin":"","src":"/assets/index.bdcbb929.js"}},{"parentTagName":"head","tagName":"link","attrs":{"rel":"stylesheet","href":"/assets/index.c4c82a28.css"}}];
+function setAttribute(target, attrs) {
+for (var key in attrs) {
+  target.setAttribute(key, attrs[key]);
+}
+return target;
+};
+for(var i = 0; i < preloads.length; i++){
+var item = preloads[i]
+var childNode = document.createElement(item.tagName);
+setAttribute(childNode, item.attrs)
+if( window.__dynamic_base__) {
+  if(item.tagName == 'link') {
+    setAttribute(childNode, { href:  window.__dynamic_base__ + item.attrs.href })
+  } else if (item.tagName == 'script') {
+    setAttribute(childNode, { src:  window.__dynamic_base__ + item.attrs.src })
+  }
+}
+document.getElementsByTagName(item.parentTagName)[0].appendChild(childNode);
+}
+})();
+</script>
+</head>
   <body>
+     
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    
     <div id="root"></div>
+   
+   <script type="text/javascript">
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("8/24/2022 10:28:00");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        Z = A-895;
+        runtime_span.innerHTML = "已运行 " + Z + "天" + B + "时" + C + "分" + D + "秒"
+    }
+    show_runtime();
+</script>
 
-    <script src="/src/main.tsx" type="module"></script>
-    <!-- customize body -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center;background-color: rgba(255,255,255,.3);">
+©2025 DINGHY    |     访问量 <span id="busuanzi_value_site_pv"></span> 次    |   <span id="runtime_span"></span>
+</div> 
   </body>
 </html>
