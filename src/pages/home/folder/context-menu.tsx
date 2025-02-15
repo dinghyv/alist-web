@@ -145,6 +145,10 @@ export const ContextMenu = () => {
           <ItemContent name="copy_link" />
         </Item>
         <Item
+        hidden={() => {
+          const index = UserPermissions.findIndex((item) => item === "rename")
+          return !UserMethods.can(me(), index)
+        }}
         onClick={() => {
               bus.emit("tool", "upload")
             }}
