@@ -1,36 +1,14 @@
 import { SideMenuItemProps } from "./SideMenu"
-import {
-  BsGearFill,
-  BsPaletteFill,
-  BsCameraFill,
-  BsWindow,
-  BsPersonCircle,
-  BsJoystick,
-  BsMedium,
-  BsFingerprint,
-  BsFront,
-  BsCloudUploadFill,
-  BsSearch,
-  BsBucket,
-  BsHddNetwork,
-} from "solid-icons/bs"
-import { FiLogIn } from "solid-icons/fi"
-import { SiMetabase } from "solid-icons/si"
-import { CgDatabase } from "solid-icons/cg"
-import { OcWorkflow2 } from "solid-icons/oc"
-import { IoCopy, IoHome, IoMagnetOutline } from "solid-icons/io"
+import { BsFront } from "solid-icons/bs"
 import { Component, lazy } from "solid-js"
-import { Group, UserRole } from "~/types"
-import { FaSolidBook, FaSolidDatabase } from "solid-icons/fa"
-import { TbArchive } from "solid-icons/tb"
+import { UserRole } from "~/types"
 import { FaSolidRocket } from 'solid-icons/fa'
-import { HiOutlineArrowUpCircle } from 'solid-icons/hi'
+import { AiFillFire } from 'solid-icons/ai'
 
 export type SideMenuItem = SideMenuItemProps & {
   component?: Component
   children?: SideMenuItem[]
 }
-
 
 export const side_menu_items: SideMenuItem[] = [
   {
@@ -41,14 +19,14 @@ export const side_menu_items: SideMenuItem[] = [
     children: [
       {
         title: "article.sidemenu.update213",
-        icon: HiOutlineArrowUpCircle,
+        icon: AiFillFire,
         to: "/articles/gtaol-updates/update213",
         role: UserRole.GUEST,
         component: lazy(() => import("./gtaol-updates/update213")),
       },
       {
         title: "article.sidemenu.update206",
-        icon: HiOutlineArrowUpCircle,
+        icon: AiFillFire,
         to: "/articles/gtaol-updates/update206",
         role: UserRole.GUEST,
         component: lazy(() => import("./gtaol-updates/update206")),
