@@ -34,8 +34,11 @@ const ItemContent = (props: { name: string }) => {
   )
 }
 
+interface ContextMenuProps {
+  isBlank?: boolean // true: 在空白区域右键；false或不传：在文件/文件夹上右键
+}
 
-export const ContextMenu = () => {
+export const ContextMenu = (props: ContextMenuProps) => {
   const { refresh } = usePath()
   const t = useT()
   const { colorMode } = useColorMode()
@@ -53,7 +56,8 @@ export const ContextMenu = () => {
       theme={colorMode() !== "dark" ? "light" : "dark"}
       style="z-index: var(--hope-zIndices-popover)"
     >
-
+      {/* 以下菜单项只在空白处右键时显示 */}
+      <Show when={props.isBlank}>
         <Item
           hidden={() => {
             const index = UserPermissions.findIndex((item) => item === "rename")
@@ -65,13 +69,12 @@ export const ContextMenu = () => {
         >
           <ItemContent name="refresh" />
         </Item>
-
         <Submenu
-        hidden={() => {
+          hidden={() => {
             const index = UserPermissions.findIndex((item) => item === "rename")
             return !UserMethods.can(me(), index)
           }}
-        label={
+          label={
             <HStack spacing="$2">
               <Icon
                 as={RiSystemAddBoxLine}
@@ -83,168 +86,171 @@ export const ContextMenu = () => {
             </HStack>
           }
         >
-        <Item
-        onClick={() => {
+          <Item
+            onClick={() => {
               bus.emit("tool", "new_file")
             }}
-        >
-        <ItemContent name="new_file" />
-        </Item>
-        <Item
-        onClick={() => {
+          >
+            <ItemContent name="new_file" />
+          </Item>
+          <Item
+            onClick={() => {
               bus.emit("tool", "mkdir")
             }}
-        >
-        <ItemContent name="mkdir" />
-        </Item>
+          >
+            <ItemContent name="mkdir" />
+          </Item>
         </Submenu>
-      <For each={["rename", "move", "copy", "delete"]}>
-        {(name) => (
+      </Show>
+
+      {/* 文件/文件夹相关菜单项，只在非空白右键时显示 */}
+      <Show when={!props.isBlank}>
+        <For each={["rename", "move", "copy", "delete"]}>
+          {(name) => (
+            <Item
+              hidden={() => {
+                const index = UserPermissions.findIndex((item) => item === name)
+                return !UserMethods.can(me(), index)
+              }}
+              onClick={() => {
+                bus.emit("tool", name)
+              }}
+            >
+              <ItemContent name={name} />
+            </Item>
+          )}
+        </For>
+        <Show when={oneChecked()}>
           <Item
             hidden={() => {
-              const index = UserPermissions.findIndex((item) => item === name)
+              const index = UserPermissions.findIndex(
+                (item) => item === "decompress",
+              )
+              return (
+                !UserMethods.can(me(), index) ||
+                selectedObjs()[0].is_dir ||
+                !isArchive(selectedObjs()[0].name)
+              )
+            }}
+            onClick={() => {
+              bus.emit("tool", "decompress")
+            }}
+          >
+            <ItemContent name="decompress" />
+          </Item>
+          <Item
+            onClick={({ props }) => {
+              if (props.is_dir) {
+                copySelectedPreviewPage()
+              } else {
+                copySelectedRawLink(true)
+              }
+            }}
+          >
+            <ItemContent name="copy_link" />
+          </Item>
+          <Item
+            hidden={() => {
+              const index = UserPermissions.findIndex((item) => item === "rename")
               return !UserMethods.can(me(), index)
             }}
             onClick={() => {
-              bus.emit("tool", name)
-            }}
-          >
-            <ItemContent name={name} />
-          </Item>
-        )}
-      </For>
-      <Show when={oneChecked()}>
-        <Item
-          hidden={() => {
-            const index = UserPermissions.findIndex(
-              (item) => item === "decompress",
-            )
-            return (
-              !UserMethods.can(me(), index) ||
-              selectedObjs()[0].is_dir ||
-              !isArchive(selectedObjs()[0].name)
-            )
-          }}
-          onClick={() => {
-            bus.emit("tool", "decompress")
-          }}
-        >
-          <ItemContent name="decompress" />
-        </Item>
-      </Show>
-      <Show when={oneChecked()}>
-        <Item
-          onClick={({ props }) => {
-            if (props.is_dir) {
-              copySelectedPreviewPage()
-            } else {
-              copySelectedRawLink(true)
-            }
-          }}
-        >
-          <ItemContent name="copy_link" />
-        </Item>
-        <Item
-        hidden={() => {
-          const index = UserPermissions.findIndex((item) => item === "rename")
-          return !UserMethods.can(me(), index)
-        }}
-        onClick={() => {
               bus.emit("tool", "upload")
             }}
-        >
-        <ItemContent name="upload" />
-        </Item>
-        <Item
-          hidden={() => {
-            const index = UserPermissions.findIndex((item) => item === "rename")
-            return !UserMethods.can(me(), index)
-          }}
-          onClick={({ props }) => {
-            if (props.is_dir) {
-              if (!canPackageDownload()) {
-                notify.warning(t("home.toolbar.package_download_disabled"))
-                return
+          >
+            <ItemContent name="upload" />
+          </Item>
+          <Item
+            hidden={() => {
+              const index = UserPermissions.findIndex((item) => item === "rename")
+              return !UserMethods.can(me(), index)
+            }}
+            onClick={({ props }) => {
+              if (props.is_dir) {
+                if (!canPackageDownload()) {
+                  notify.warning(t("home.toolbar.package_download_disabled"))
+                  return
+                }
+                bus.emit("tool", "package_download")
+              } else {
+                batchDownloadSelected()
               }
-              bus.emit("tool", "package_download")
-            } else {
-              batchDownloadSelected()
-            }
-          }}
-        >
-          <ItemContent name="download" />
-        </Item>
-        <Submenu
-          hidden={({ props }) => {
-            return props.type !== ObjType.VIDEO
-          }}
-          label={
-            <HStack spacing="$2">
-              <Icon
-                as={BsPlayCircleFill}
-                boxSize="$7"
-                p="$0_5"
-                color="$info9"
-              />
-              <Text>{t("home.preview.play_with")}</Text>
-            </HStack>
-          }
-        >
-          <For each={players}>
-            {(player) => (
-              <Item
-                onClick={({ props }) => {
-                  const href = convertURL(player.scheme, {
-                    raw_url: "",
-                    name: props.name,
-                    d_url: rawLink(props, true),
-                  })
-                  window.open(href, "_self")
-                }}
-              >
-                <HStack spacing="$2">
-                  <Image
-                    m="0 auto"
-                    boxSize="$7"
-                    src={`${window.__dynamic_base__}/images/${player.icon}.webp`}
-                  />
-                  <Text>{player.name}</Text>
-                </HStack>
-              </Item>
-            )}
-          </For>
-        </Submenu>
-      </Show>
-      <Show when={!oneChecked() && haveSelected()}>
-        <Submenu label={<ItemContent name="copy_link" />}>
-          <Item onClick={copySelectedPreviewPage}>
-            {t("home.toolbar.preview_page")}
+            }}
+          >
+            <ItemContent name="download" />
           </Item>
-          <Item onClick={() => copySelectedRawLink()}>
-            {t("home.toolbar.down_link")}
-          </Item>
-          <Item onClick={() => copySelectedRawLink(true)}>
-            {t("home.toolbar.encode_down_link")}
-          </Item>
-        </Submenu>
-        <Submenu label={<ItemContent name="download" />}>
-          <Item onClick={batchDownloadSelected}>
-            {t("home.toolbar.batch_download")}
-          </Item>
-          <Show
-            when={
-              UserMethods.is_admin(me()) || getSettingBool("package_download")
+          <Submenu
+            hidden={({ props }) => props.type !== ObjType.VIDEO}
+            label={
+              <HStack spacing="$2">
+                <Icon
+                  as={BsPlayCircleFill}
+                  boxSize="$7"
+                  p="$0_5"
+                  color="$info9"
+                />
+                <Text>{t("home.preview.play_with")}</Text>
+              </HStack>
             }
           >
-            <Item onClick={() => bus.emit("tool", "package_download")}>
-              {t("home.toolbar.package_download")}
+            <For each={players}>
+              {(player) => (
+                <Item
+                  onClick={({ props }) => {
+                    const href = convertURL(player.scheme, {
+                      raw_url: "",
+                      name: props.name,
+                      d_url: rawLink(props, true),
+                    })
+                    window.open(href, "_self")
+                  }}
+                >
+                  <HStack spacing="$2">
+                    <Image
+                      m="0 auto"
+                      boxSize="$7"
+                      src={`${window.__dynamic_base__}/images/${player.icon}.webp`}
+                    />
+                    <Text>{player.name}</Text>
+                  </HStack>
+                </Item>
+              )}
+            </For>
+          </Submenu>
+        </Show>
+        <Show when={!oneChecked() && haveSelected()}>
+          <Submenu label={<ItemContent name="copy_link" />}>
+            <Item onClick={copySelectedPreviewPage}>
+              {t("home.toolbar.preview_page")}
             </Item>
-            <Item onClick={playlistDownloadSelected}>
-              {t("home.toolbar.playlist_download")}
+            <Item onClick={() => copySelectedRawLink()}>
+              {t("home.toolbar.down_link")}
             </Item>
-          </Show>
-          <Item onClick={sendToAria2}>{t("home.toolbar.send_aria2")}</Item>
-        </Submenu>
+            <Item onClick={() => copySelectedRawLink(true)}>
+              {t("home.toolbar.encode_down_link")}
+            </Item>
+          </Submenu>
+          <Submenu label={<ItemContent name="download" />}>
+            <Item onClick={batchDownloadSelected}>
+              {t("home.toolbar.batch_download")}
+            </Item>
+            <Show
+              when={
+                UserMethods.is_admin(me()) || getSettingBool("package_download")
+              }
+            >
+              <Item onClick={() => bus.emit("tool", "package_download")}>
+                {t("home.toolbar.package_download")}
+              </Item>
+              <Item onClick={playlistDownloadSelected}>
+                {t("home.toolbar.playlist_download")}
+              </Item>
+            </Show>
+            <Item onClick={sendToAria2}>
+              {t("home.toolbar.send_aria2")}
+            </Item>
+          </Submenu>
+        </Show>
       </Show>
     </Menu>
   )
