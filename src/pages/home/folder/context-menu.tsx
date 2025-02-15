@@ -55,7 +55,7 @@ export const ContextMenu = () => {
       <Show when={oneChecked()}>
         <Item
           hidden={() => {
-            const index = UserPermissions.findIndex((item) => item === "refresh")
+            const index = UserPermissions.findIndex((item) => item === "rename")
             return !UserMethods.can(me(), index)
           }}
           onClick={() => {
@@ -113,7 +113,7 @@ export const ContextMenu = () => {
         </Item>
         <Item
           hidden={() => {
-            const index = UserPermissions.findIndex((item) => item === "download")
+            const index = UserPermissions.findIndex((item) => item === "rename")
             return !UserMethods.can(me(), index)
           }}
           onClick={({ props }) => {
