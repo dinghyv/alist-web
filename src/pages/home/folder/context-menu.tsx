@@ -17,6 +17,7 @@ import {
 import { players } from "../previews/video_box"
 import { BsPlayCircleFill } from "solid-icons/bs"
 import { isArchive } from "~/store/archive"
+import { RiSystemAddBoxLine } from 'solid-icons/ri'
 
 const ItemContent = (props: { name: string }) => {
   const t = useT()
@@ -64,6 +65,36 @@ export const ContextMenu = () => {
         >
           <ItemContent name="refresh" />
         </Item>
+
+        <Submenu
+        hidden={() => {
+            const index = UserPermissions.findIndex((item) => item === "rename")
+            return !UserMethods.can(me(), index)
+          }}
+        label={
+            <HStack spacing="$2">
+              <Icon
+                as={RiSystemAddBoxLine}
+                boxSize="$7"
+                p="$0_5"
+                color="$info9"
+              />
+              <Text>{t("home.toolbar.new")}</Text>
+            </HStack>
+          }
+        >
+        <Item>
+        onClick={() => {
+              bus.emit("tool", "new_file")
+            }}
+        <ItemContent name="refresh" />
+        </Item>
+        <Item>
+        onClick={() => {
+              bus.emit("tool", "mkdir")
+            }}
+        </Item>
+        </Submenu>
       </Show>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
