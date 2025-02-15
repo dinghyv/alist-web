@@ -4,6 +4,7 @@ import { Component, lazy } from "solid-js"
 import { UserRole } from "~/types"
 import { FaSolidRocket } from 'solid-icons/fa'
 import { AiFillFire } from 'solid-icons/ai'
+import { IoHome } from "solid-icons/io"
 
 export type SideMenuItem = SideMenuItemProps & {
   component?: Component
@@ -39,5 +40,12 @@ export const side_menu_items: SideMenuItem[] = [
         component: lazy(() => import("./gtaol-updates/update206")),
       },
     ],
+  },
+  {
+    title: "manage.sidemenu.home",
+    icon: IoHome,
+    to: "/",
+    role: UserRole.GUEST,
+    external: true,
   },
 ]

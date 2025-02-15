@@ -4,7 +4,7 @@ import { useT, useManageTitle } from "~/hooks"
 
 const fetchReadme = async () =>
   await (
-    await fetch("hhttps://gh-proxy.com/raw.githubusercontent.com/dinghy421/articles/refs/heads/main/index.md")
+    await fetch("https://gh-proxy.com/raw.githubusercontent.com/dinghy421/articles/refs/heads/main/index.md")
   ).text()
 
 const About = () => {
