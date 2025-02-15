@@ -53,7 +53,7 @@ export const ContextMenu = () => {
       theme={colorMode() !== "dark" ? "light" : "dark"}
       style="z-index: var(--hope-zIndices-popover)"
     >
-      <Show when={oneChecked()}>
+
         <Item
           hidden={() => {
             const index = UserPermissions.findIndex((item) => item === "rename")
@@ -98,7 +98,6 @@ export const ContextMenu = () => {
         <ItemContent name="mkdir" />
         </Item>
         </Submenu>
-      </Show>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
           <Item
