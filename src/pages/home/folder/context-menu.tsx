@@ -1,9 +1,10 @@
 import { Menu, Item, Submenu } from "solid-contextmenu"
-import { useCopyLink, useDownload, useLink, useT, usePath } from "~/hooks"
+import { useCopyLink, useDownload, useLink, useT } from "~/hooks"
 import "solid-contextmenu/dist/style.css"
 import { HStack, Icon, Text, useColorMode, Image } from "@hope-ui/solid"
 import { operations } from "../toolbar/operations"
 import { For, Show } from "solid-js"
+import { usePath } from "~/hooks"
 import { bus, convertURL, notify } from "~/utils"
 import { ObjType, UserMethods, UserPermissions } from "~/types"
 import {
@@ -16,7 +17,7 @@ import {
 import { players } from "../previews/video_box"
 import { BsPlayCircleFill } from "solid-icons/bs"
 import { isArchive } from "~/store/archive"
-import { RiSystemAddBoxLine } from "solid-icons/ri"
+import { RiSystemAddBoxLine } from 'solid-icons/ri'
 
 const ItemContent = (props: { name: string }) => {
   const t = useT()
@@ -33,17 +34,18 @@ const ItemContent = (props: { name: string }) => {
   )
 }
 
+
 export const ContextMenu = () => {
   const { refresh } = usePath()
   const t = useT()
   const { colorMode } = useColorMode()
   const { copySelectedRawLink, copySelectedPreviewPage } = useCopyLink()
-  const { batchDownloadSelected, sendToAria2, playlistDownloadSelected } = useDownload()
+  const { batchDownloadSelected, sendToAria2, playlistDownloadSelected } =
+    useDownload()
   const canPackageDownload = () => {
     return UserMethods.is_admin(me()) || getSettingBool("package_download")
   }
   const { rawLink } = useLink()
-
   return (
     <Menu
       id={1}
@@ -51,46 +53,51 @@ export const ContextMenu = () => {
       theme={colorMode() !== "dark" ? "light" : "dark"}
       style="z-index: var(--hope-zIndices-popover)"
     >
-      <Item
-        hidden={() => {
-          const index = UserPermissions.findIndex((item) => item === "rename")
-          return !UserMethods.can(me(), index)
-        }}
-        onClick={() => {
-          refresh(undefined, true)
-        }}
-      >
-        <ItemContent name="refresh" />
-      </Item>
 
-      <Submenu
+        <Item
+          hidden={() => {
+            const index = UserPermissions.findIndex((item) => item === "rename")
+            return !UserMethods.can(me(), index)
+          }}
+          onClick={() => {
+            refresh(undefined, true)
+          }}
+        >
+          <ItemContent name="refresh" />
+        </Item>
+
+        <Submenu
         hidden={() => {
-          const index = UserPermissions.findIndex((item) => item === "rename")
-          return !UserMethods.can(me(), index)
-        }}
+            const index = UserPermissions.findIndex((item) => item === "rename")
+            return !UserMethods.can(me(), index)
+          }}
         label={
-          <HStack spacing="$2">
-            <Icon as={RiSystemAddBoxLine} boxSize="$7" p="$0_5" color="$info9" />
-            <Text>{t("home.toolbar.new")}</Text>
-          </HStack>
-        }
-      >
-        <Item
-          onClick={() => {
-            bus.emit("tool", "new_file")
-          }}
+            <HStack spacing="$2">
+              <Icon
+                as={RiSystemAddBoxLine}
+                boxSize="$7"
+                p="$0_5"
+                color="$info9"
+              />
+              <Text>{t("home.toolbar.new")}</Text>
+            </HStack>
+          }
         >
-          <ItemContent name="new_file" />
+        <Item
+        onClick={() => {
+              bus.emit("tool", "new_file")
+            }}
+        >
+        <ItemContent name="new_file" />
         </Item>
         <Item
-          onClick={() => {
-            bus.emit("tool", "mkdir")
-          }}
+        onClick={() => {
+              bus.emit("tool", "mkdir")
+            }}
         >
-          <ItemContent name="mkdir" />
+        <ItemContent name="mkdir" />
         </Item>
-      </Submenu>
-
+        </Submenu>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
           <Item
@@ -106,11 +113,12 @@ export const ContextMenu = () => {
           </Item>
         )}
       </For>
-
       <Show when={oneChecked()}>
         <Item
           hidden={() => {
-            const index = UserPermissions.findIndex((item) => item === "decompress")
+            const index = UserPermissions.findIndex(
+              (item) => item === "decompress",
+            )
             return (
               !UserMethods.can(me(), index) ||
               selectedObjs()[0].is_dir ||
@@ -124,7 +132,6 @@ export const ContextMenu = () => {
           <ItemContent name="decompress" />
         </Item>
       </Show>
-
       <Show when={oneChecked()}>
         <Item
           onClick={({ props }) => {
@@ -138,15 +145,15 @@ export const ContextMenu = () => {
           <ItemContent name="copy_link" />
         </Item>
         <Item
-          hidden={() => {
-            const index = UserPermissions.findIndex((item) => item === "rename")
-            return !UserMethods.can(me(), index)
-          }}
-          onClick={() => {
-            bus.emit("tool", "upload")
-          }}
+        hidden={() => {
+          const index = UserPermissions.findIndex((item) => item === "rename")
+          return !UserMethods.can(me(), index)
+        }}
+        onClick={() => {
+              bus.emit("tool", "upload")
+            }}
         >
-          <ItemContent name="upload" />
+        <ItemContent name="upload" />
         </Item>
         <Item
           hidden={() => {
@@ -168,10 +175,17 @@ export const ContextMenu = () => {
           <ItemContent name="download" />
         </Item>
         <Submenu
-          hidden={({ props }) => props.type !== ObjType.VIDEO}
+          hidden={({ props }) => {
+            return props.type !== ObjType.VIDEO
+          }}
           label={
             <HStack spacing="$2">
-              <Icon as={BsPlayCircleFill} boxSize="$7" p="$0_5" color="$info9" />
+              <Icon
+                as={BsPlayCircleFill}
+                boxSize="$7"
+                p="$0_5"
+                color="$info9"
+              />
               <Text>{t("home.preview.play_with")}</Text>
             </HStack>
           }
@@ -201,7 +215,6 @@ export const ContextMenu = () => {
           </For>
         </Submenu>
       </Show>
-
       <Show when={!oneChecked() && haveSelected()}>
         <Submenu label={<ItemContent name="copy_link" />}>
           <Item onClick={copySelectedPreviewPage}>
@@ -218,7 +231,11 @@ export const ContextMenu = () => {
           <Item onClick={batchDownloadSelected}>
             {t("home.toolbar.batch_download")}
           </Item>
-          <Show when={UserMethods.is_admin(me()) || getSettingBool("package_download")}>
+          <Show
+            when={
+              UserMethods.is_admin(me()) || getSettingBool("package_download")
+            }
+          >
             <Item onClick={() => bus.emit("tool", "package_download")}>
               {t("home.toolbar.package_download")}
             </Item>
