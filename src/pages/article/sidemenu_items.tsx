@@ -15,7 +15,7 @@ export const side_menu_items: SideMenuItem[] = [
   {
     title: "article.sidemenu.index",
     icon: BsFront,
-    to: "/articles/index",
+    to: "/articles",
     role: UserRole.GUEST,
     component: lazy(() => import("./About")),
   },
