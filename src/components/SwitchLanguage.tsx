@@ -156,7 +156,7 @@ export const VisitAC = () => {
   return (
     <Tooltip label="DINGHY博客" placement="top">
       <IconButton 
-        onClick={() => window.open("https://ac.vyhd.xyz", "_blank")}
+        onClick={() => window.open("https://os.dinghyv.com/articles/index", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
