@@ -42,6 +42,28 @@ export const side_menu_items: SideMenuItem[] = [
     ],
   },
   {
+    title: "article.sidemenu.game-tips",
+    icon: FaSolidRocket,
+    to: "/articles/game-tips",
+    role: UserRole.GUEST,
+    children: [
+      {
+        title: "article.sidemenu.apartment-heists",
+        icon: AiFillFire,
+        to: "/articles/gtaol-updates/apartment-heists",
+        role: UserRole.GUEST,
+        component: lazy(() => import("./game-tips/apartment-heists")),
+      },
+      {
+        title: "article.sidemenu.char",
+        icon: AiFillFire,
+        to: "/articles/gtaol-updates/char",
+        role: UserRole.GUEST,
+        component: lazy(() => import("./game-tips/char")),
+      },
+    ],
+  },
+  {
     title: "manage.sidemenu.home",
     icon: IoHome,
     to: "/",

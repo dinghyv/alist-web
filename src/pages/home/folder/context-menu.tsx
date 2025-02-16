@@ -35,7 +35,7 @@ const ItemContent = (props: { name: string }) => {
 }
 
 
-export const ContextMenu = () => {
+export const ContextMenu = (props: any) => {
   const { refresh } = usePath()
   const t = useT()
   const { colorMode } = useColorMode()
@@ -53,7 +53,7 @@ export const ContextMenu = () => {
       theme={colorMode() !== "dark" ? "light" : "dark"}
       style="z-index: var(--hope-zIndices-popover)"
     >
-
+      <Show when={!props}>
         <Item
           hidden={() => {
             const index = UserPermissions.findIndex((item) => item === "rename")
@@ -98,6 +98,8 @@ export const ContextMenu = () => {
         <ItemContent name="mkdir" />
         </Item>
         </Submenu>
+      </Show>
+      <Show when={props}>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
           <Item
@@ -246,6 +248,7 @@ export const ContextMenu = () => {
           <Item onClick={sendToAria2}>{t("home.toolbar.send_aria2")}</Item>
         </Submenu>
       </Show>
+    </Show>
     </Menu>
   )
 }
