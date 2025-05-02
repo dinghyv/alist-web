@@ -126,7 +126,7 @@ export const UserLogin = () => {
   return (
     <Tooltip label="账号登录" placement="top">
       <IconButton 
-        onClick={() => window.open("https://cloud.antwen.com/@login", "_blank")}
+        onClick={() => window.open("https://share.antwen.com/@login", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
@@ -141,7 +141,7 @@ export const UserAdmin = () => {
   return (
     <Tooltip label="管理后台" placement="top">
       <IconButton 
-        onClick={() => window.open("https://cloud.antwen.com/@manage", "_blank")}
+        onClick={() => window.open("https://share.antwen.com/@manage", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
