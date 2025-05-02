@@ -188,7 +188,7 @@ export const side_menu_items: SideMenuItem[] = [
   {
     title: "manage.sidemenu.docs",
     icon: FaSolidBook,
-    to: "https://os.dinghyv.com/articles/index",
+    to: "https://an",
     role: UserRole.GUEST,
     external: true,
   },

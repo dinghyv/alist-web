@@ -65,14 +65,14 @@
     </tr>
     <tr>
         <td></td>
-        <td>*2.如果访问速度更慢了，点击<a href="https://www.vyhd.xyz">我的主页</a>，内有最新网址发布。</td>
+        <td>*2.如果访问速度更慢了，点击<a href="https://antwen.com">我的主页</a>，内有最新网址发布。</td>
     </tr>
 </table>
 </details>
 <details> 
 <summary><b>📌注意事项</b></summary>
 <br />
-<p>1.WebDav服务器地址：https://nd.vyhd.xyz 如需挂载服务，请联系我的<a href="mailto:dinghyv@gmail.com">个人邮箱</a>。<br>
+<p>1.WebDav服务器地址：https://share.antwen.com 如需挂载服务，请联系我的<a href="mailto:dinghyv@gmail.com">个人邮箱</a>。<br>
     <br />
 2.以在线浏览为主，禁止高强度下载。<br><br />
 3.如果网页播放体验不佳（可能是因为Alist的视频播放器太卡了），可以配合Potplayer（<a href="https://potplayer.tv/?lang=zh_CN">Windows</a>）或VLC播放器（<a href="https://mirrors.aliyun.com/videolan/vlc-android/3.5.4/VLC-Android-3.5.4-arm64-v8a.apk">安卓</a> |<a href="https://apps.apple.com/cn/app/vlc-media-player/id650377962">iOS</a>）使用资源。<br><br />
@@ -83,7 +83,7 @@
 <details> 
 <summary><b>📟联系邮箱</b></summary>
 <br />
-<a href="mailto:dinghyv@gmail.com">dinghyv@gmail.com</a><br />
+<a href="mailto:me@antwen.info">dinghyv@gmail.com</a><br />
 </details>
 <details> 
 <summary><b>☕Buy Me a Cup of Coffee</b></summary>

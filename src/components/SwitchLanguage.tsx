@@ -94,9 +94,9 @@ export const SwitchLanguageWhite = () => {
 
 export const DinghyHomepage = () => {
   return (
-    <Tooltip label="DINGHY的个人主页" placement="top">
+    <Tooltip label="安稳的个人主页" placement="top">
       <IconButton 
-        onClick={() => window.open("https://www.vyhd.xyz", "_blank")} 
+        onClick={() => window.open("https://wantwen.com", "_blank")} 
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
@@ -111,7 +111,7 @@ export const SendMeEmail = () => {
   return (
     <Tooltip label="给我邮件" placement="top">
       <IconButton 
-        onClick={() => window.location.href = "mailto:dinghyv@gmail.com"} 
+        onClick={() => window.location.href = "mailto:me@antwen.info"} 
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
@@ -154,9 +154,9 @@ export const UserAdmin = () => {
 
 export const VisitAC = () => {
   return (
-    <Tooltip label="DINGHY博客" placement="top">
+    <Tooltip label="安稳博客" placement="top">
       <IconButton 
-        onClick={() => window.open("https://os.dinghyv.com/articles/index", "_blank")}
+        onClick={() => window.open("https://antwen.art", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
