@@ -94,9 +94,9 @@ export const SwitchLanguageWhite = () => {
 
 export const DinghyHomepage = () => {
   return (
-    <Tooltip label="安稳的个人主页" placement="top">
+    <Tooltip label="安稳主页" placement="top">
       <IconButton 
-        onClick={() => window.open("https://wantwen.com", "_blank")} 
+        onClick={() => window.open("https://antwen.com", "_blank")} 
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
