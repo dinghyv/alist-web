@@ -96,7 +96,7 @@ export const DinghyHomepage = () => {
   return (
     <Tooltip label="安稳主页" placement="top">
       <IconButton 
-        onClick={() => window.open("https://antwen.com", "_blank")} 
+        onClick={() => window.open("https://share.antwen.com", "_blank")} 
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
@@ -156,7 +156,7 @@ export const VisitAC = () => {
   return (
     <Tooltip label="安稳博客" placement="top">
       <IconButton 
-        onClick={() => window.open("https://antwen.art", "_blank")}
+        onClick={() => window.open("https://antwen.com", "_blank")}
         boxSize="$8" 
         p="$0_5"
         variant="ghost"
